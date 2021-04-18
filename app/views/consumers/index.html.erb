@@ -1,1 +1,29 @@
-<h1>Hello!</h1>
+<h3>Перелік споживачів</h3>
+<%= link_to new_consumer_path, class: "btn btn-outline-dark" do %>
+	<i class="fas fa-plus"></i> Новий споживач
+<% end %>
+</br>
+</br>
+<table class="table table-striped table-sm">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Найменування</th>
+			<th class="text-right">ЕДРПОУ</th>
+			<th class="text-right">Код&nbsp;1С</th>
+			<th class="text-right"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% n = 0 %>
+		<% @consumers.each do |consumer| %>
+			<tr>
+				<td><%= n += 1 %></td>
+				<td><%= truncate(consumer.name, length: 50) %></td>
+				<td class="text-right">consumer.edrpou</td>
+				<td class="text-right">consumer.onec_id</td>
+				<td></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

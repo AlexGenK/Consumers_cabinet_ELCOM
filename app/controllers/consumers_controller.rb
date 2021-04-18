@@ -1,4 +1,5 @@
 class ConsumersController < ApplicationController
-	def index
-	end
+  def index
+    @consumers=Consumer.order(:name)
+  end
 end

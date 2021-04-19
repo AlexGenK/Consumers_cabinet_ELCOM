@@ -20,7 +20,11 @@ class ConsumersController < ApplicationController
   end
 
   def destroy
-    @consumer.destroy
+    if @consumer.destroy
+      flash[:notice] = "Споживач #{@consumer.name} успішно видалений"
+    else
+      flash[:alert] = 'Неможливо видалити споживача'
+    end
     redirect_to consumers_path
   end
 

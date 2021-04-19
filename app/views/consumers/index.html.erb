@@ -22,7 +22,19 @@
 				<td><%= truncate(consumer.name, length: 50) %></td>
 				<td class="text-right"><%= consumer.edrpou %></td>
 				<td class="text-right"><%= consumer.onec_id %></td>
-				<td></td>
+				<td class="text-center">
+					<div class="btn-group">
+					<%= link_to edit_consumer_path(consumer), 
+						class: "btn btn-outline-dark btn-sm" do %>
+						<i class="fas fa-edit test-edit-payment"></i>
+					<% end %>
+					<%= link_to consumer, method: :delete, 
+						class: "btn btn-outline-danger btn-sm",
+						data: {confirm: "Ви впевнені що хочете видалити споживача #{consumer.name}?"} do %>
+						<i class="fas fa-times test-delete-payment">&nbsp;</i>
+					<% end %>
+					</div>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>

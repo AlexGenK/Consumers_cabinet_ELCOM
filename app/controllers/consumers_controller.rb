@@ -1,4 +1,6 @@
 class ConsumersController < ApplicationController
+  before_action :set_consumer, only: [:edit, :update, :destroy]
+
   def index
     @consumers=Consumer.order(:name)
   end
@@ -17,6 +19,11 @@ class ConsumersController < ApplicationController
     end
   end
 
+  def destroy
+    @consumer.destroy
+    redirect_to consumers_path
+  end
+
   private
 
   def consumer_params
@@ -24,5 +31,9 @@ class ConsumersController < ApplicationController
                                      :bank, :mfo, :account, :address, :phone, :mail,
                                      :dog_en_number, :dog_en_date, :distribution,
                                      :client_username, :manager_username, :onec_id)
+  end
+
+  def set_consumer
+    @consumer = Consumer.find(params[:id])
   end
 end

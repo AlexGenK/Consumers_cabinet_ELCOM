@@ -24,7 +24,7 @@ class ConsumersController < ApplicationController
 
   def update
     if @consumer.update(consumer_params)
-      redirect_to consumers_path, notice: "Споживач #{@consumer.name} успішно відредагований"
+      redirect_to consumer_path(@consumer), notice: "Споживач #{@consumer.name} успішно відредагований"
     else
       flash[:alert] = 'Неможливо відредагувати споживача'
       render :edit

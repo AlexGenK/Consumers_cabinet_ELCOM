@@ -19,7 +19,7 @@
 		<% @consumers.each do |consumer| %>
 			<tr>
 				<td><%= n += 1 %></td>
-				<td><%= truncate(consumer.name, length: 50) %></td>
+				<td><%= link_to truncate(consumer.name, length: 50), consumer %></td>
 				<td class="text-right"><%= consumer.edrpou %></td>
 				<td class="text-right"><%= consumer.onec_id %></td>
 				<td class="text-center">

@@ -1,5 +1,5 @@
 class ConsumersController < ApplicationController
-  before_action :set_consumer, only: [:edit, :update, :destroy]
+  before_action :set_consumer, only: [:edit, :update, :destroy, :show]
 
   def index
     @consumers=Consumer.order(:name)
@@ -16,6 +16,18 @@ class ConsumersController < ApplicationController
     else
       flash[:alert] = 'Неможливо створити споживача'
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @consumer.update(consumer_params)
+      redirect_to consumers_path, notice: "Споживач #{@consumer.name} успішно відредагований"
+    else
+      flash[:alert] = 'Неможливо відредагувати споживача'
+      render :edit
     end
   end
 

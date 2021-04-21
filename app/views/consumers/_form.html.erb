@@ -1,90 +1,134 @@
 <%= form_for consumer do |f| %>
-	<div class="form-row">
-		<div class="form-group col-md-4">
-		<%= f.label :name,"Найменування" %>
-		<%= f.text_field :name, class: "form-control" %>
-			<div class="invalid-feedback">вже існує</div>
+<% style ||= '' %>
+<% if style == 'show' %>
+<fieldset disabled>
+<% end %>
+	<% if style != 'show' %>
+	<div class="form-group row">
+		<%= f.label :name,"Найменування", class: "col-md-2 col-form-label" %>
+		<div class="col-md-6">
+			<%= f.text_field :name, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
 		</div>
-		<div class="form-group col-md-8">
-		<%= f.label :full_name,"Повне найменування" %>
-		<%= f.text_field :full_name, class: "form-control" %>
-		</div>
-	</div>
-	<div class="form-row">
-		<div class="form-group col-md-12">
-		<%= f.label :address,"Адрес" %>
-		<%= f.text_field :address, class: "form-control" %>
-		</div>
-	</div>
-	<div class="form-row">
-		<div class="form-group col-md-4">
-		<%= f.label :onec_id, "Номер 1С" %>
-		<%= f.number_field :onec_id, class: "form-control" %>
-			<div class="invalid-feedback">вже існує</div>
-		</div>
-		<div class="form-group col-md-4">
-		<%= f.label :edrpou,"Код ЄДРПОУ" %>
-		<%= f.text_field :edrpou, class: "form-control" %>
-			<div class="invalid-feedback">вже існує</div>
-		</div>
-		<div class="form-group col-md-4">
-		<%= f.label :inn,"Код ІПН" %>
-		<%= f.text_field :inn, class: "form-control" %>
-			<div class="invalid-feedback">вже існує</div>
+		<%= f.label :onec_id, "Номер 1С", class: "col-md-2 col-form-label" %>
+		<div class="col-md-2">
+			<%= f.number_field :onec_id, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="form-group col-md-4">
-		<%= f.label :director,"Директор" %>
-		<%= f.text_field :director, class: "form-control" %>
-		</div>
-		<div class="form-group col-md-4">
-		<%= f.label :phone,"Телефони" %>
-		<%= f.text_field :phone, class: "form-control" %>
-		</div>
-		<div class="form-group col-md-4">
-		<%= f.label :mail,"E-mail" %>
-		<%= f.text_field :mail, class: "form-control" %>
+	<% end %>
+	<div class="form-group row">
+		<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
+		<div class="col-md-10">
+			<%= f.text_area :full_name, class: "form-control" %>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="form-group col-md-5">
-		<%= f.label :bank,"Банк" %>
-		<%= f.text_field :bank, class: "form-control" %>
-		</div>
-		<div class="form-group col-md-2">
-		<%= f.label :mfo,"МФО" %>
-		<%= f.text_field :mfo, class: "form-control" %>
-		</div>
-		<div class="form-group col-md-5">
-		<%= f.label :account,"Рахунок" %>
-		<%= f.text_field :account, class: "form-control" %>
+	<div class="form-group row">
+		<%= f.label :director,"Керівник", class: "col-md-2 col-form-label" %>
+		<div class="col-md-10">
+			<%= f.text_field :director, class: "form-control" %>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="form-group col-md-3">
-		<%= f.label :dog_en_number, "Договір" %>
-		<%= f.text_field :dog_en_number, class: "form-control" %>
+	<div class="form-group row">
+		<%= f.label :edrpou,"ЄДРПОУ", class: "col-md-2 col-form-label" %>
+		<div class="col-md-4">
+			<%= f.text_field :edrpou, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
 		</div>
-		<div class="form-group col-md-3">
-		<%= f.label :dog_en_date, "від" %>
-		<%= f.date_field :dog_en_date, class: "form-control" %>
-		</div>
-		<div class="form-group col-md-3">
-		<%= f.label :distribution, "Оплата розподілу" %>
-		<%= f.check_box :distribution, class: "form-control" %>
+		<%= f.label :inn,"ІПН", class: "col-md-1 col-form-label" %>
+		<div class="col-md-5">
+			<%= f.text_field :inn, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="col-md-3">
-			<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
-				<i class="fas fa-save"></i> Зберегти
-			<% end %>
+
+	<div class='card mb-3'>
+		<div class="card-header">
+			Банківські реквізіти
 		</div>
-		<div class="col-md-3">
-			<%= link_to :back, class: "btn btn-outline-secondary btn-block" do %>
-				<i class="fas fa-undo-alt"></i> Повернутись
-			<% end %>
+		<div class='card-body mb-n3'>
+			<div class="form-group row">
+				<%= f.label :account,"Рахунок", class: "col-md-2 col-form-label" %>
+				<div class="col-md-6">
+					<%= f.text_field :account, class: "form-control" %>
+				</div>
+				<%= f.label :mfo,"МФО", class: "col-md-2 col-form-label" %>
+				<div class="col-md-2">
+					<%= f.text_field :mfo, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :bank,"Банк", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :bank, class: "form-control" %>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<div class='card mb-3'>
+		<div class="card-header">
+			Контактні дані
+		</div>
+		<div class='card-body mb-n3'>
+			<div class="form-group row">
+				<%= f.label :address,"Юр. адреса", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :address, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :phone,"Телефони", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :phone, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :mail,"E-mail", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :mail, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<% if style != 'show' %>
+		<div class='card mb-3'>
+			<div class="card-header">
+				Дані щодо договіру постачання електроенергії
+			</div>
+			<div class='card-body mb-n3'>
+				<div class="form-group row">
+					<%= f.label :dog_en_number, "Договір №", class: "col-md-2 col-form-label" %>
+					<div class="col-md-2">
+						<%= f.text_field :dog_en_number, class: "form-control" %>
+					</div>
+					<%= f.label :dog_en_date, "від", class: "col-md-1 col-form-label" %>
+					<div class="col-md-3">
+						<%= f.date_field :dog_en_date, class: "form-control" %>
+					</div>
+					<%= f.label :distribution, "Оплата розподілу", class: "col-md-2 col-form-label" %>
+					<div class="col-md-2">
+						<%= f.check_box :distribution, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+				<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
+					<i class="fas fa-save"></i> Зберегти
+				<% end %>
+			</div>
+			<div class="col-md-3">
+				<%= link_to :back, class: "btn btn-outline-secondary btn-block" do %>
+					<i class="fas fa-undo-alt"></i> Повернутись
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+<% if style == 'show' %>
+</fieldset>
+<% end %>
 <% end %>

@@ -1,0 +1,90 @@
+<%= form_for [:admin, purveyor] do |f| %>
+
+	<div class="form-group row">
+		<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
+		<div class="col-md-10">
+			<%= f.text_area :full_name, class: "form-control" %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :director,"Керівник", class: "col-md-2 col-form-label" %>
+		<div class="col-md-10">
+			<%= f.text_field :director, class: "form-control" %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :edrpou,"ЄДРПОУ", class: "col-md-2 col-form-label" %>
+		<div class="col-md-4">
+			<%= f.text_field :edrpou, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
+		</div>
+		<%= f.label :inn,"ІПН", class: "col-md-1 col-form-label" %>
+		<div class="col-md-5">
+			<%= f.text_field :inn, class: "form-control" %>
+				<div class="invalid-feedback">вже існує</div>
+		</div>
+	</div>
+
+	<div class='card mb-3'>
+		<div class="card-header">
+			Банківські реквізіти
+		</div>
+		<div class='card-body mb-n3'>
+			<div class="form-group row">
+				<%= f.label :account,"Рахунок", class: "col-md-2 col-form-label" %>
+				<div class="col-md-6">
+					<%= f.text_field :account, class: "form-control" %>
+				</div>
+				<%= f.label :mfo,"МФО", class: "col-md-2 col-form-label" %>
+				<div class="col-md-2">
+					<%= f.text_field :mfo, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :bank,"Банк", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :bank, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='card mb-3'>
+		<div class="card-header">
+			Контактні дані
+		</div>
+		<div class='card-body mb-n3'>
+			<div class="form-group row">
+				<%= f.label :address,"Юр. адреса", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :address, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :phone,"Телефони", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :phone, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<%= f.label :mail,"E-mail", class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+					<%= f.text_field :mail, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
+			<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
+				<i class="fas fa-save"></i> Зберегти
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<%= link_to :back, class: "btn btn-outline-secondary btn-block" do %>
+				<i class="fas fa-undo-alt"></i> Повернутись
+			<% end %>
+		</div>
+	</div>
+<% end %>

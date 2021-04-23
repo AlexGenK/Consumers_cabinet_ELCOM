@@ -1,7 +1,12 @@
 class Admin::PurveyorController < ApplicationController
 	before_action :set_purveyor
+  before_action :set_consumer, only: ['show']
 
-	def edit
+
+	def show
+  end
+
+  def edit
 	end
 
   def update
@@ -13,12 +18,15 @@ class Admin::PurveyorController < ApplicationController
     end
   end
 
-
 	private
 
 	def set_purveyor
     @purveyor = Purveyor.first
     @purveyor ||= Purveyor.create(full_name: '')
+  end
+
+  def set_consumer
+    @consumer = Consumer.find(params[:consumer_id])
   end
 
   def purveyor_params

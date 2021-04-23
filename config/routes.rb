@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   	resource :purveyor, controller: 'purveyor', only: [:edit, :update]
   end
 
-  resources :consumers
+  resources :consumers do
+  	get 'purveyor', to: 'admin/purveyor#show'
+  end
   
   root to: 'consumers#index'
 end

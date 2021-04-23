@@ -1,5 +1,10 @@
 <%= form_for [:admin, purveyor] do |f| %>
 
+	<% style ||= '' %>
+	<% if style == 'show' %>
+		<fieldset disabled>
+	<% end %>
+
 	<div class="form-group row">
 		<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
 		<div class="col-md-10">
@@ -75,16 +80,20 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-3">
-			<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
-				<i class="fas fa-save"></i> Зберегти
-			<% end %>
+	<% if style == 'show' %>
+		</fieldset>
+	<% else %>
+		<div class="row">
+			<div class="col-md-3">
+				<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
+					<i class="fas fa-save"></i> Зберегти
+				<% end %>
+			</div>
+			<div class="col-md-3">
+				<%= link_to :back, class: "btn btn-outline-secondary btn-block" do %>
+					<i class="fas fa-undo-alt"></i> Повернутись
+				<% end %>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<%= link_to :back, class: "btn btn-outline-secondary btn-block" do %>
-				<i class="fas fa-undo-alt"></i> Повернутись
-			<% end %>
-		</div>
-	</div>
+	<%end %>
 <% end %>

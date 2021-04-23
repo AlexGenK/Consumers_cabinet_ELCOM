@@ -1,5 +1,5 @@
-<%= link_to  "Облікові дані<br />споживача".html_safe, :back, class: "btn btn-outline-info btn-block #{active == 1 ? 'active' : ''}" %>
-<%= link_to  "Облікові дані<br />постачальника".html_safe, '#', class: "btn btn-outline-info btn-block #{active == 2 ? 'active' : ''}" %>
+<%= link_to  "Облікові дані<br />споживача".html_safe, @consumer, class: "btn btn-outline-info btn-block #{active == 1 ? 'active' : ''}" %>
+<%= link_to  "Облікові дані<br />постачальника".html_safe, consumer_purveyor_path(@consumer), class: "btn btn-outline-info btn-block #{active == 2 ? 'active' : ''}" %>
 <%= link_to  "Договір постачання електроенергії", '#', class: "btn btn-outline-info btn-block #{active == 3 ? 'active' : ''}" %>
 <%= link_to  "Стан розрахунків за електроенергію", '#', class: "btn btn-outline-info btn-block #{active == 4 ? 'active' : ''}" %>
 <%= link_to  "Стан розрахунків за послугу з розподілу", '#', class: "btn btn-outline-info btn-block #{active == 5 ? 'active' : ''}" %>

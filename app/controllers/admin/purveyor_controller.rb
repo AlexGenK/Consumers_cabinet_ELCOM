@@ -2,7 +2,6 @@ class Admin::PurveyorController < ApplicationController
 	before_action :set_purveyor
   before_action :set_consumer, only: ['show']
 
-
 	def show
   end
 

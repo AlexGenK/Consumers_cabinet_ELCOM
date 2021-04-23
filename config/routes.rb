@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   end
 
   resources :consumers do
+  	resources :payments
+
   	get 'purveyor', to: 'admin/purveyor#show'
   end
   

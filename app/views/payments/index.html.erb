@@ -2,19 +2,87 @@
 	<div class='col-md-3'></div>
 	<div class='col-md-9'><h3><%= @consumer.name %></h3></div>
 </div>
+
 <div class='row'>
 	<div class='col-md-3'>
 		<%= render '/buttons', active: 3 %>
 	</div>
 	<div class='col-md-9'>
+
+		<div class='row'>
+			<div class='col'>
+				<p>Договір про постачання електричної енергії № 
+					<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumer.dog_en_number %> </span> від 
+					<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumer.dog_en_date %></span>
+				</p>
+			</div>
+		</div>
+
+		<div class='row'>
+			<div class='col'>
+				<p>Оплата за послуги з розподілу е/енергії здійснюється Споживачем через:
+					<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumer.distribution ? "постачальника" : "оператора системі розподілу" %> </span>
+				</p>
+			</div>
+		</div>
+
+		<div class='row'>
+			<div class='col'>
+				<p class="text-center">Оплата за електричну енергію розрахункового періоду здійснюється плановими
+				платежами за наступним графіком у терміни (строки)*</p>
+
+				<% if @payments.first %>
+
+					<table class="table table-striped table-bordered table-sm">
+						<tbody>
+							<% @payments.each do |payment| %>
+								<tr>
+									<td class="text-center"><%= payment.textualize %></td>
+									<td class="text-center"><%= "#{payment.percent}%" %></td>
+									<td class="text-center">
+										<div class="btn-group">
+											<%= link_to edit_consumer_payment_path(@consumer, payment), 
+												class: "btn btn-outline-dark btn-sm" do %>
+												<i class="fas fa-edit test-edit-payment"></i>
+											<% end %>
+											<%= link_to [@consumer, payment], method: :delete, 
+												class: "btn btn-outline-danger btn-sm",
+												data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
+												<i class="fas fa-times test-delete-payment">&nbsp</i>
+											<% end %>									
+										</div>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+				<% else %>
+					<p class="font-italic text-danger text-center">Графік відсутній</p>
+				<% end %>
+
+				<p class="font-italic">* - Оплата за електричну енергію за цим Договором здійснюється Споживачем шляхом перерахування коштів плановими платежами на поточний рахунок із спеціальним режимом використання Постачальника, вказаний у платіжному документі.</p>
+
+			</div>
+		</div>
+
+		<div class='row'>
+			<div class='col'>
+				<%= render 'form', consumer: @consumer, payment: @payment, submit_caption: 'Додати платіж' %>
+			</div>
+		</div>
 	</div>
 </div>
+<br />
 <div class='row'>
+
 	<div class='col-md-3'>
 	</div>
+
 	<div class='col-md-3'>
 		<%= link_to consumers_path, class: "btn btn-outline-secondary btn-block" do %>
 			<i class="fas fa-undo-alt"></i> Повернутись
 		<% end %>
 	</div>
+
 </div>

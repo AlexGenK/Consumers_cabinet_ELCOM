@@ -1,10 +1,26 @@
 class PaymentsController < ApplicationController
-	before_action :set_consumer
+  before_action :set_consumer
 
-	def index
-	end
+  def index
+    @payments = @consumer.payments.all.order(:period, :date)
+    @payment =  @consumer.payments.new
+  end
 
-	private
+  def create
+    @payment = @consumer.payments.new(payment_params)
+    if (@consumer.payments.sum(:percent) + @payment.percent.to_i) > 100
+      flash[:alert] = 'Неможливо створити платіж. Планові платежі перевищили 100%'
+    else
+      flash[:alert] = 'Неможливо створити платіж. Введіть коректні значення' unless @payment.save
+    end
+    redirect_to consumer_payments_path(@consumer)
+  end
+
+  private
+
+  def payment_params
+    params.require(:payment).permit(:date, :period, :percent)
+  end
 
   def set_consumer
     @consumer = Consumer.find(params[:consumer_id])

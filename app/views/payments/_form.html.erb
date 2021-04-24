@@ -1,0 +1,21 @@
+<%= form_for [consumer, payment] do |f| %>
+	<div class="form-row align-items-end">
+			<div class="col-auto">
+				<%= f.label :date, "Число:" %>
+				<%= f.number_field :date, class: "form-control" %>
+			</div>
+			<div class="col-auto">
+				<%= f.label :period, "Період:" %>
+				<%= f.select :period, UA_PERIOD.invert, {}, { class: "form-control" } %>
+			</div>
+			<div class="col-auto">
+				<%= f.label :percent, "Відсоток:" %>
+				<%= f.number_field :percent, class: "form-control" %>
+			</div>
+			<div class="col-auto">
+				<%= f.button type: 'submit', class: "btn btn-outline-dark" do %>
+					<i class="fas fa-save"></i> <%= submit_caption %>
+				<% end %>
+			</div>
+	</div>
+<% end %>

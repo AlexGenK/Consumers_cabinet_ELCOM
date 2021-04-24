@@ -40,17 +40,11 @@
 									<td class="text-center"><%= payment.textualize %></td>
 									<td class="text-center"><%= "#{payment.percent}%" %></td>
 									<td class="text-center">
-										<div class="btn-group">
-											<%= link_to edit_consumer_payment_path(@consumer, payment), 
-												class: "btn btn-outline-dark btn-sm" do %>
-												<i class="fas fa-edit test-edit-payment"></i>
-											<% end %>
-											<%= link_to [@consumer, payment], method: :delete, 
-												class: "btn btn-outline-danger btn-sm",
-												data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
-												<i class="fas fa-times test-delete-payment">&nbsp</i>
-											<% end %>									
-										</div>
+										<%= link_to [@consumer, payment], method: :delete, 
+											class: "btn btn-outline-danger btn-sm",
+											data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
+											<i class="fas fa-times test-delete-payment">&nbsp</i>
+										<% end %>									
 									</td>
 								</tr>
 							<% end %>

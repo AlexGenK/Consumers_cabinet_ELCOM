@@ -28,6 +28,8 @@
               Адміністрування
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                <%= link_to "Імпорт споживачів", admin_filling_consumers_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
                 <%= link_to "Облікові дані постачальника", edit_admin_purveyor_path, class: "dropdown-item" %>
               </div>
           </ul>

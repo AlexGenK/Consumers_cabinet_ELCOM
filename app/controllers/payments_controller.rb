@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_consumer
+  before_action :set_payment, only: [:destroy]
 
   def index
     @payments = @consumer.payments.all.order(:period, :date)
@@ -16,6 +17,11 @@ class PaymentsController < ApplicationController
     redirect_to consumer_payments_path(@consumer)
   end
 
+  def destroy
+    flash[:alert] = 'Неможливо видалити платіж' unless @payment.destroy
+    redirect_to consumer_payments_path(@consumer)
+  end
+
   private
 
   def payment_params
@@ -24,5 +30,9 @@ class PaymentsController < ApplicationController
 
   def set_consumer
     @consumer = Consumer.find(params[:consumer_id])
+  end
+
+  def set_payment
+    @payment = Payment.find(params[:id])
   end
 end

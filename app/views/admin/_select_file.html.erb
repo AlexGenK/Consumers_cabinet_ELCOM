@@ -1,0 +1,27 @@
+<%= form_tag(operation, multipart: true) do %>
+  <div class='row'>
+    <div class="col-sm-10">
+    	<div class='custom-file'>
+      	<%= file_field_tag :datafile, class: 'custom-file-input' %>
+      	<%= label_tag :datafile, 'Виберіть файл для імпорту', class: 'custom-file-label' %>
+    	</div>
+    </div>
+    <div class="col-sm-2">
+      <%= button_tag 'імпортувати', class: 'btn btn-outline-primary', 
+      data: { disable_with: '<span class="spinner-border spinner-border-sm"></span> Зачекайте...'.html_safe} %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+document.querySelector('.custom-file-input').addEventListener('change',function(e){
+  var fileName = document.getElementById("datafile").files[0].name;
+  var nextSibling = e.target.nextElementSibling
+  nextSibling.innerText = fileName
+});
+
+$('#datafile').on('change',function(){
+    var fileName = $(this).val().replace(/^.*[\\\/]/, '');
+    $(this).next('.custom-file-label').html(fileName);
+})
+</script>

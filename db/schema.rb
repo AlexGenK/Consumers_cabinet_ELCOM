@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_202901) do
+ActiveRecord::Schema.define(version: 2021_04_26_183941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_202901) do
     t.string "mail"
     t.string "dog_en_number"
     t.date "dog_en_date"
-    t.boolean "distribution"
+    t.boolean "distribution", default: true
     t.string "client_username"
     t.string "manager_username"
     t.datetime "created_at", precision: 6, null: false

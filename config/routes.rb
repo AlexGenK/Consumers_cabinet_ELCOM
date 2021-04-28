@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
     get 'filling_consumers',  to: 'filling_consumers#set_params'
     post 'filling_consumers', to: 'filling_consumers#start'
+
+    get 'filling_consumptions',  to: 'filling_consumptions#set_params'
+    post 'filling_consumptions', to: 'filling_consumptions#start'
   end
 
   resources :consumers do

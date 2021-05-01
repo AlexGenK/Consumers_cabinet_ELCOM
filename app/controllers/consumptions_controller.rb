@@ -3,6 +3,18 @@ class ConsumptionsController < ApplicationController
 
   def index
     @consumptions = @consumer.consumptions.all.order(period: :desc)
+    @consumption = @consumptions.first
+    redirect_to consumer_consumption_path(@consumer, @consumption) if @consumption
+  end
+
+  def show
+     @consumptions = @consumer.consumptions.all.order(period: :desc)
+     @consumption = Consumption.find(params[:id])
+  end
+
+  def selector
+    @consumption = Consumption.find(params[:consumption_id])
+    redirect_to consumer_consumption_path(@consumer, @consumption)
   end
 
   private

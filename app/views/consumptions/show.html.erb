@@ -1,0 +1,43 @@
+<div class='row'>
+	<div class='col-md-3'></div>
+	<div class='col-md-9'><h3><%= @consumer.name %></h3></div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+		<%= render '/buttons', active: 4 %>
+	</div>
+	<div class='col-md-9 border rounded py-2 mb-2'>
+		<br />
+		<%= form_tag selector_consumer_consumptions_path(@consumer) do %>
+			<%= label_tag 'consumption_id', 'Розрахунковий період:'%>
+			<%= select_tag 'consumption_id', options_from_collection_for_select(@consumptions, :id, :text_period, @consumption.id) %>
+			<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+		<% end %>
+		<br />
+		<p>Вхідне сальдо: 
+			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.opening_balance %> </span> грн., в т.р. ПДВ 20% 
+		</p>
+		<p>Сплачені грошові кошти: 
+			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.money %> </span> грн., в т.р. ПДВ 20% 
+		</p>
+		<p>Нараховано за спожиту електроенергію: 
+			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.cost %> </span> грн., в т.р. ПДВ 20% 
+		</p>
+		<p>Вихідне сальдо: 
+			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.closing_balance %> </span> грн., в т.р. ПДВ 20% 
+		</p>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+	</div>
+
+	<div class='col-md-3'>
+		<%= link_to consumers_path, class: "btn btn-outline-secondary btn-block" do %>
+			<i class="fas fa-undo-alt"></i> Повернутись
+		<% end %>
+	</div>
+
+</div>

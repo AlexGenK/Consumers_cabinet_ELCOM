@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :consumers do
     resources :payments
-    resources :consumptions
+    resources :consumptions do
+      post 'selector', on: :collection
+    end
 
     get 'purveyor', to: 'admin/purveyor#show'
   end

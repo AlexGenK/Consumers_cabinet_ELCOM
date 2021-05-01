@@ -2,10 +2,7 @@ class ConsumptionsController < ApplicationController
   before_action :set_consumer
 
   def index
-    @consumption = @consumer.consumptions.first
-    if @consumption
-      redirect_to consumer_consumption_path(@consumer, @consumption)
-    end
+    @consumptions = @consumer.consumptions.all.order(period: :desc)
   end
 
   private

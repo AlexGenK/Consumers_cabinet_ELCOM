@@ -9,7 +9,13 @@
 	</div>
 	<div class='col-md-9 border rounded py-2 mb-2'>
 		<br />
-		<p class="font-italic text-danger text-center">Відомості про розрахунки за електроенергію відсутні</p>
+		<% if @consumptions %>
+			<% @consumptions.each do |item| %>
+				<p><%= "#{item.period} - #{item.power} кВт"%></p>
+			<% end %>
+		<% else %>
+			<p class="font-italic text-danger text-center">Відомості про розрахунки за електроенергію відсутні</p>
+		<% end %>
 	</div>
 </div>
 

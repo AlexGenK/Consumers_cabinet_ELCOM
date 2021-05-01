@@ -8,25 +8,41 @@
 		<%= render '/buttons', active: 4 %>
 	</div>
 	<div class='col-md-9 border rounded py-2 mb-2'>
-		<br />
+
 		<%= form_tag selector_consumer_consumptions_path(@consumer) do %>
-			<%= label_tag 'consumption_id', 'Розрахунковий період:'%>
-			<%= select_tag 'consumption_id', options_from_collection_for_select(@consumptions, :id, :text_period, @consumption.id) %>
-			<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+			<div class="form-row align-items-end">
+				<div class="col-auto">
+					<%= label_tag 'consumption_id', 'Розрахунковий період:' %>
+				</div>
+				<div class="col-auto">
+					<%= select_tag 'consumption_id', options_from_collection_for_select(@consumptions, :id, :text_period, @consumption.id),  class: 'form-control' %>
+				</div>
+				<div class='col-auto'>
+					<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+				</div>
+			</div>
 		<% end %>
 		<br />
-		<p>Вхідне сальдо: 
-			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.opening_balance %> </span> грн., в т.р. ПДВ 20% 
-		</p>
-		<p>Сплачені грошові кошти: 
-			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.money %> </span> грн., в т.р. ПДВ 20% 
-		</p>
-		<p>Нараховано за спожиту електроенергію: 
-			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.cost %> </span> грн., в т.р. ПДВ 20% 
-		</p>
-		<p>Вихідне сальдо: 
-			<span class="border rounded px-2 py-1 mx-2 my-1"> <%= @consumption.closing_balance %> </span> грн., в т.р. ПДВ 20% 
-		</p>
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Вхідне сальдо: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@consumption.opening_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Сплачені грошові кошти: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@consumption.money, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Нараховано за спожиту електроенергію: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@consumption.cost, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+		<div class='col-md-5 text-right'> Вихідне сальдо: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@consumption.closing_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
 	</div>
 </div>
 

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
     get 'filling_consumptions',  to: 'filling_consumptions#set_params'
     post 'filling_consumptions', to: 'filling_consumptions#start'
+
+    get 'filling_distributions',  to: 'filling_distributions#set_params'
+    post 'filling_distributions', to: 'filling_distributions#start'
   end
 
   resources :consumers do

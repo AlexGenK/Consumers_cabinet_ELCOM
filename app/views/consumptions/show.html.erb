@@ -15,7 +15,7 @@
 					<%= label_tag 'consumption_id', 'Розрахунковий період:' %>
 				</div>
 				<div class="col-auto">
-					<%= select_tag 'consumption_id', options_from_collection_for_select(@consumptions, :id, :text_period, @consumption.id),  class: 'form-control' %>
+					<%= select_tag 'consumption_id', options_from_collection_for_select(@consumptions, :id, :text_period, @consumption.id), class: 'form-control' %>
 				</div>
 				<div class='col-auto'>
 					<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>

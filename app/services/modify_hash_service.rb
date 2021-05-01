@@ -15,6 +15,16 @@ class ModifyHashService
     consumptions_array = self.to_f(a, :closing_balance)
   end
 
+  def self.to_distributions(a)
+    consumptions_array = self.to_i(a, :onec_id)
+    consumptions_array = self.to_date(a, :period)
+    consumptions_array = self.to_f(a, :opening_balance)
+    consumptions_array = self.to_f(a, :money)
+    consumptions_array = self.to_i(a, :power)
+    consumptions_array = self.to_f(a, :cost)
+    consumptions_array = self.to_f(a, :closing_balance)
+  end
+
   def self.to_power_kwt(a, key)
     a.each do |item|
       item[key] = ((item[key].to_f) * 1000).to_i

@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :consumptions do
       post 'selector', on: :collection
     end
-
+    resources :distributions do
+      post 'selector', on: :collection
+    end
     get 'purveyor', to: 'admin/purveyor#show'
   end
   

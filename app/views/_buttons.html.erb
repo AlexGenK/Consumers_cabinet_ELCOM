@@ -3,6 +3,6 @@
 <%= link_to  "Договір постачання електроенергії", consumer_payments_path(@consumer), class: "btn btn-outline-info btn-block #{active == 3 ? 'active' : ''}" %>
 <%= link_to  "Стан розрахунків за електроенергію", consumer_consumptions_path(@consumer), class: "btn btn-outline-info btn-block #{active == 4 ? 'active' : ''}" %>
 <% if @consumer.distribution %>
-	<%= link_to  "Стан розрахунків за послугу з розподілу", '#', class: "btn btn-outline-info btn-block #{active == 5 ? 'active' : ''}" %>
+	<%= link_to  "Стан розрахунків за послугу з розподілу", consumer_distributions_path(@consumer), class: "btn btn-outline-info btn-block #{active == 5 ? 'active' : ''}" %>
 <% end %>
 <%= link_to  "Динаміка споживання електроенергії", '#', class: "btn btn-outline-info btn-block #{active == 6 ? 'active' : ''}" %>

@@ -1,0 +1,59 @@
+<div class='row'>
+	<div class='col-md-3'></div>
+	<div class='col-md-9'><h3><%= @consumer.name %></h3></div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+		<%= render '/buttons', active: 5 %>
+	</div>
+	<div class='col-md-9 border rounded py-2 mb-2'>
+
+		<%= form_tag selector_consumer_distributions_path(@consumer) do %>
+			<div class="form-row align-items-end">
+				<div class="col-auto">
+					<%= label_tag 'consumption_id', 'Розрахунковий період:' %>
+				</div>
+				<div class="col-auto">
+					<%= select_tag 'consumption_id', options_from_collection_for_select(@distributions, :id, :text_period, @distribution.id), class: 'form-control' %>
+				</div>
+				<div class='col-auto'>
+					<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+				</div>
+			</div>
+		<% end %>
+		<br />
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Вхідне сальдо: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.opening_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Сплачені грошові кошти: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.money, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+			<div class='col-md-5 text-right'> Нараховано за послугу з розподілу: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.cost, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+		<div class='row my-2'>
+		<div class='col-md-5 text-right'> Вихідне сальдо: </div>
+			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.closing_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+		</div>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+	</div>
+
+	<div class='col-md-3'>
+		<%= link_to consumers_path, class: "btn btn-outline-secondary btn-block" do %>
+			<i class="fas fa-undo-alt"></i> Повернутись
+		<% end %>
+	</div>
+
+</div>

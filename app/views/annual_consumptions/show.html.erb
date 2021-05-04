@@ -9,8 +9,24 @@
 	</div>
 	
 	<div class='col-md-9 border rounded py-2 mb-2'>
-
-
+		<% if @years.first %>
+			<%= form_tag consumer_annual_consumptions_path(@consumer), method: 'get' do %>
+				<div class="form-row align-items-end">
+					<div class="col-auto">
+						<%= label_tag 'year', 'Розрахунковий рік:' %>
+					</div>
+					<div class="col-auto">
+						<%= select_tag 'year', options_for_select(@years, @current_year), class: 'form-control' %>
+					</div>
+					<div class='col-auto'>
+						<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+					</div>
+				</div>
+			<% end %>
+		<% else %>
+			<br />
+			<p class="font-italic text-danger text-center">Відомості про споживання електроенергії відсутні</p>
+		<% end %>
 	</div>
 </div>
 

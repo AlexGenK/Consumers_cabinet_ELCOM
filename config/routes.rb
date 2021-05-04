@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post 'selector', on: :collection
     end
     get 'purveyor', to: 'admin/purveyor#show'
+    get 'annual_consumptions', to: 'annual_consumptions#show' 
   end
   
   root to: 'consumers#index'

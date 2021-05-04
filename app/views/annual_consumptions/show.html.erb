@@ -10,19 +10,48 @@
 	
 	<div class='col-md-9 border rounded py-2 mb-2'>
 		<% if @years.first %>
-			<%= form_tag consumer_annual_consumptions_path(@consumer), method: 'get' do %>
-				<div class="form-row align-items-end">
-					<div class="col-auto">
-						<%= label_tag 'year', 'Розрахунковий рік:' %>
-					</div>
-					<div class="col-auto">
-						<%= select_tag 'year', options_for_select(@years, @current_year), class: 'form-control' %>
-					</div>
-					<div class='col-auto'>
-						<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+			<div class='row'>
+				<div class='col-md-12'>
+					<%= form_tag consumer_annual_consumptions_path(@consumer), method: 'get' do %>
+						<div class="form-row align-items-end">
+							<div class="col-auto">
+								<%= label_tag 'year', 'Розрахунковий рік:' %>
+							</div>
+							<div class="col-auto">
+								<%= select_tag 'year', options_for_select(@years, @current_year), class: 'form-control' %>
+							</div>
+							<div class='col-auto'>
+								<%= button_tag 'Показати', class: 'btn btn-outline-primary' %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<br />
+			<div class='row'>
+				<div class='col-md-12'>
+					<div class="table-responsive">
+						<table class='table table-sm table-bordered'>
+							<thead class='thead-light'>
+								<tr>
+									<th class='text-center'>Розрахунковий місяць</th>
+									<% @annual_cons.each do |item| %>
+										<th class='text-center align-middle'> <%= UA_MONTHS_SINGLE[item.period.month] %> </th>
+									<% end %>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class='text-center'>Фактично спожитий обсяг е/е, МВт*год.</td>
+									<% @annual_cons.each do |item| %>
+										<td class='text-right align-middle'> <%= number_with_precision((item.power.to_f)/1000, precision: 3, delimiter: ' ') %> </td>
+									<% end %>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-			<% end %>
+			</div>
 		<% else %>
 			<br />
 			<p class="font-italic text-danger text-center">Відомості про споживання електроенергії відсутні</p>

@@ -47,6 +47,20 @@
               </div>
           </ul>
         </div>
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <span class="navbar-text">
+              Користувач: <%= current_user.name %> | 
+            </span>
+            <li class="nav-item">
+              <%= link_to "Вихід", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Увійти", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
       </nav>
 
       <% if flash[:alert] %>

@@ -29,22 +29,28 @@
 			</div>
 			<br />
 			<div class='row'>
+				<div class='col'>
+					<%= column_chart @annual_table, ytitle: 'МВт*год' %>
+				</div>
+			</div>
+			<br />
+			<div class='row'>
 				<div class='col-md-12'>
 					<div class="table-responsive">
 						<table class='table table-sm table-bordered'>
 							<thead class='thead-light'>
 								<tr>
 									<th class='text-center'>Розрахунковий місяць</th>
-									<% @annual_cons.each do |item| %>
-										<th class='text-center align-middle'> <%= UA_MONTHS_SINGLE[item.period.month] %> </th>
+									<% @annual_table.each do |item| %>
+										<th class='text-center align-middle'> <%= item[0] %> </th>
 									<% end %>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td class='text-center'>Фактично спожитий обсяг е/е, МВт*год.</td>
-									<% @annual_cons.each do |item| %>
-										<td class='text-right align-middle'> <%= number_with_precision((item.power.to_f)/1000, precision: 3, delimiter: ' ') %> </td>
+									<% @annual_table.each do |item| %>
+										<td class='text-right align-middle'> <%= number_with_precision(item[1], precision: 3, delimiter: ' ') %> </td>
 									<% end %>
 								</tr>
 							</tbody>

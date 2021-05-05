@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'purveyor', to: 'admin/purveyor#show'
     get 'annual_consumptions', to: 'annual_consumptions#show' 
   end
+
+  resources :users
   
   root to: 'consumers#index'
 end

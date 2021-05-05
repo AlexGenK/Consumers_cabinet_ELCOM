@@ -1,0 +1,37 @@
+<h3>Перелік користувачів</h3>
+<%= link_to new_user_registration_path, class: "btn btn-outline-dark" do %>
+	<i class="fas fa-plus"></i> Новий користувач
+<% end %>
+<br>
+<br>
+<table class="table table-striped table-sm">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>ім'я</th>
+			<th>E-mail</th>
+			<th class="text-center">Адмін</th>
+			<th class="text-center">Менеджер</th>
+			<th class="text-center">Клієнт</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% n = 0 %>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= n += 1 %> </td>
+			<td><%= link_to user.name, edit_user_path(user) %></td>
+			<td><%= user.email %></td>
+			<td class="text-center"><%== user.admin_role? ? "<i class='fas fa-check'></i>" : "" %></td>
+			<td class="text-center"><%== user.manager_role? ? "<i class='fas fa-check'></i>" : "" %></td>
+			<td class="text-center"><%== user.client_role? ? "<i class='fas fa-check'></i>" : "" %></td>
+			<td>
+			<%= link_to user, method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: "Ви впевнені що хочете видалити користувача #{user.name}?"} do %>
+				<i class="fas fa-times"></i>
+			<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

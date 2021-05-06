@@ -1,0 +1,50 @@
+<h3>Редагування користувача</h3>
+<br>
+<%= form_for @user do |f| %>
+	<div class='form-group row'>
+		<%= f.label :name, "Ім'я", class: "col-md-2 col-lg-1 col-form-label" %>
+		<div class='col-sm-5'>
+			<%= f.text_field :name, class: "form-control" %>
+			<div class="invalid-feedback">Вже зареєстровано</div>
+		</div>
+	</div>
+	<div class='form-group row'>
+		<%= f.label :email, "E-mail", class: "col-md-2 col-lg-1 col-form-label" %>
+		<div class='col-sm-5'>
+			<%= f.email_field :email, class: "form-control" %>
+			<div class="invalid-feedback">Вже зареєстровано</div>
+		</div>
+	</div>
+	<div class="row">
+		<legend class="col-form-label col-md-2 col-lg-1 pt-0">Ролі</legend>
+		<div class="col-sm-10">
+			<div class="form-check">
+				<%= f.check_box :admin_role, class: "form-check-input" %>
+				<%= f.label :admin_role, "Адміністратор", class: "form-check-label" %>
+			</div>
+			<div class="form-check">
+				<%= f.check_box :manager_role, class: "form-check-input" %>
+				<%= f.label :manager_role, "Менеджер", class: "form-check-label" %>
+			</div>
+			<div class="form-check">
+				<%= f.check_box :client_role, class: "form-check-input" %>
+				<%= f.label :client_role, "Клієнт", class: "form-check-label" %>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class='row'>
+		<div class='col-sm-3 mb-2'>
+		<%= f.button type: 'submit', class: "btn btn-outline-dark btn-block" do %>
+			<i class="fas fa-save"></i> Зберегти
+		<% end %>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-sm-3'>
+		<%= link_to users_path, class: "btn btn-outline-secondary btn-block" do %>
+			<i class="fas fa-undo-alt"></i> Повернутись
+		<% end %>
+		</div>
+	</div>
+<% end %>

@@ -14,6 +14,24 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def edit
+  end
+
+  def update
+    if (@user.admin_role?) && (User.where(admin_role: true).count <= 1) && (user_params[:admin_role] == "0")
+      flash[:alert] = 'Неможливо видалити останнього адміністратора'
+      redirect_to users_path
+    else
+      if @user.update(user_params)
+        flash[:notice] = "Користувач #{@user.name} був успішно відредагований" 
+        redirect_to users_path
+      else
+        flash[:alert] = 'Неможливо відредагувати користувача'
+        render :edit
+      end
+    end
+  end
+
   private
 
   def set_user

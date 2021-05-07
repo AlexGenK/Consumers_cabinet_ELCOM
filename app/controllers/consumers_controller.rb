@@ -1,5 +1,6 @@
 class ConsumersController < ApplicationController
   before_action :set_consumer, only: [:edit, :update, :destroy, :show]
+  before_action :set_users_list, only: [:new, :edit, :create]
 
   def index
     @consumers=Consumer.order(:name)
@@ -51,5 +52,10 @@ class ConsumersController < ApplicationController
 
   def set_consumer
     @consumer = Consumer.find(params[:id])
+  end
+
+  def set_users_list
+    @managers = User.where("manager_role").order(:name).collect(&:name)
+    @clients = User.where("client_role").order(:name).collect(&:name)
   end
 end

@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "chartkick/chart.js"
+import 'bootstrap-select/dist/js/bootstrap-select.min'
 
 Rails.start()
 Turbolinks.start()
@@ -21,3 +22,7 @@ document.addEventListener("turbolinks:load", function() {
         $('[data-toggle="popover"]').popover()
     })
 })
+
+$(document).on('turbolinks:load', function() {
+  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
+});

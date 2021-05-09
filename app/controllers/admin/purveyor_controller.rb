@@ -1,6 +1,7 @@
 class Admin::PurveyorController < ApplicationController
 	before_action :set_purveyor
   before_action :set_consumer, only: ['show']
+  load_and_authorize_resource
 
 	def show
   end

@@ -1,5 +1,6 @@
 class AnnualConsumptionsController < ApplicationController
   before_action :set_consumer
+  load_and_authorize_resource
 
   def show
   	scope = @consumer.consumptions

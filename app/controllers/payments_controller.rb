@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_action :set_consumer
   before_action :set_payment, only: [:destroy]
+  load_and_authorize_resource
 
   def index
     @payments = @consumer.payments.all.order(:period, :date)

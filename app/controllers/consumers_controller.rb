@@ -1,6 +1,7 @@
 class ConsumersController < ApplicationController
   before_action :set_consumer, only: [:edit, :update, :destroy, :show]
   before_action :set_users_list, only: [:new, :edit, :create]
+  load_and_authorize_resource
 
   def index
     @consumers=Consumer.order(:name)

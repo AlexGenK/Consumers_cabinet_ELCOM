@@ -1,5 +1,6 @@
 class Admin::FillingDistributionsController < ApplicationController
 	skip_before_action :verify_authenticity_token
+	authorize_resource :class => false
 
   def set_params
   end

@@ -1,5 +1,6 @@
 class DistributionsController < ApplicationController
   before_action :set_consumer
+  load_and_authorize_resource
 
   def index
     @distributions = @consumer.distributions.all.order(period: :desc)

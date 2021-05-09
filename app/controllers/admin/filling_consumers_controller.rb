@@ -1,5 +1,6 @@
 class Admin::FillingConsumersController < ApplicationController
 	skip_before_action :verify_authenticity_token
+	authorize_resource :class => false
 
 	def set_params
 	end

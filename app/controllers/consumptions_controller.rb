@@ -1,5 +1,6 @@
 class ConsumptionsController < ApplicationController
   before_action :set_consumer
+  load_and_authorize_resource
 
   def index
     @consumptions = @consumer.consumptions.all.order(period: :desc)

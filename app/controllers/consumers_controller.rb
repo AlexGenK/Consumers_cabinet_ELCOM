@@ -1,6 +1,9 @@
 class ConsumersController < ApplicationController
+  include Verifiable
+
   before_action :set_consumer, only: [:edit, :update, :destroy, :show]
   before_action :set_users_list, only: [:new, :edit, :create]
+  before_action :detect_invalid_user, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index

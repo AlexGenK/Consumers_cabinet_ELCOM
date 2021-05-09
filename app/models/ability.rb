@@ -16,14 +16,18 @@ class Ability
         can :manage, Consumption
         can :manage, Distribution
         can :manage, Payment
+        can :read, Purveyor
         can [:new, :create, :index], User
+        can :show, :annual_consumption
     end
 
     if user.client_role?
         can :read, Consumer
-        can :read, Consumption
-        can :read, Distribution
+        can [:index, :show, :selector], Consumption
+        can [:index, :show, :selector], Distribution
         can :read, Payment
+        can :read, Purveyor
+        can :show, :annual_consumption
     end
   end
 end

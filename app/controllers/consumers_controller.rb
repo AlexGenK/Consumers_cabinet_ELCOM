@@ -4,7 +4,7 @@ class ConsumersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @consumers=Consumer.order(:name)
+    @consumers=GetConsumerListQuery.call(Consumer.order(:name), current_user)
   end
 
   def new

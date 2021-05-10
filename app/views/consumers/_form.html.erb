@@ -127,8 +127,9 @@
 					</div>
 					<%= f.label :manager_username, "Менеджер", class: "col-md-2 col-form-label" %>
 					<div class="col-md-4">
-					<%= f.select :manager_username, @managers, {include_blank: true}, class: 'selectpicker form-control', data: { 'live-search' => 'true' } %>
+					<%= f.select :manager_username, @managers, {include_blank: true}, disabled: !current_user.admin_role?, class: 'selectpicker form-control', data: { 'live-search' => 'true' } %>
 					</div>
+					<%= f.hidden_field :manager_username if !current_user.admin_role? %>
 				</div>
 			</div>
 		</div>

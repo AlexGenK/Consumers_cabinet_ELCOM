@@ -11,7 +11,7 @@ class ConsumersController < ApplicationController
   end
 
   def new
-    @consumer = Consumer.new
+    @consumer = Consumer.new(manager_username: current_user.name)
   end
 
   def create

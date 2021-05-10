@@ -18,9 +18,11 @@
 			<i class="fas fa-undo-alt"></i> Повернутись
 		<% end %>
 	</div>
-	<div class='col-md-3'>
-		<%= link_to edit_consumer_path(@consumer), class: "btn btn-outline-dark btn-block" do %>
-			<i class="fas fa-edit"></i> Редагувати
-		<% end %>
-	</div>
+	<% if can? :edit, Consumer %>
+		<div class='col-md-3'>
+			<%= link_to edit_consumer_path(@consumer), class: "btn btn-outline-dark btn-block" do %>
+				<i class="fas fa-edit"></i> Редагувати
+			<% end %>
+		</div>
+	<% end %>
 </div>

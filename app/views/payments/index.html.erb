@@ -39,13 +39,15 @@
 								<tr>
 									<td class="text-center"><%= payment.textualize %></td>
 									<td class="text-center"><%= "#{payment.percent}%" %></td>
-									<td class="text-center">
-										<%= link_to [@consumer, payment], method: :delete, 
-											class: "btn btn-outline-danger btn-sm",
-											data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
-											<i class="fas fa-times test-delete-payment">&nbsp</i>
-										<% end %>									
-									</td>
+									<% if can? :destroy, Payment %>
+										<td class="text-center">
+											<%= link_to [@consumer, payment], method: :delete, 
+												class: "btn btn-outline-danger btn-sm",
+												data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
+												<i class="fas fa-times test-delete-payment">&nbsp</i>
+											<% end %>									
+										</td>
+									<% end %>
 								</tr>
 							<% end %>
 						</tbody>
@@ -60,11 +62,13 @@
 			</div>
 		</div>
 
-		<div class='row'>
-			<div class='col'>
-				<%= render 'form', consumer: @consumer, payment: @payment, submit_caption: 'Додати платіж' %>
+		<% if can? :new, Payment %>
+			<div class='row'>
+				<div class='col'>
+					<%= render 'form', consumer: @consumer, payment: @payment, submit_caption: 'Додати платіж' %>
+				</div>
 			</div>
-		</div>
+		<% end %>
 	</div>
 </div>
 

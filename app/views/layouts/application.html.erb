@@ -34,9 +34,11 @@
             <li class="nav-item">
               <%= link_to "Споживачі", consumers_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Користувачі", users_path, class: "nav-link" %>
-            </li>
+            <% if can? :index, User  %>
+              <li class="nav-item">
+                <%= link_to "Користувачі", users_path, class: "nav-link" %>
+              </li>
+            <% end %>
             <% if current_user&.admin_role? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

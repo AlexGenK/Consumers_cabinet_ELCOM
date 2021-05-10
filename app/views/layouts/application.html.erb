@@ -37,18 +37,20 @@
             <li class="nav-item">
               <%= link_to "Користувачі", users_path, class: "nav-link" %>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Адміністрування
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                <%= link_to "Імпорт споживачів", admin_filling_consumers_path, class: "dropdown-item" %>
-                <%= link_to "Імпорт даних по розрахункам за е/енергію", admin_filling_consumptions_path, class: "dropdown-item" %>
-                <%= link_to "Імпорт даних по розрахункам за розподіл е/енергії", admin_filling_distributions_path, class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Облікові дані постачальника", edit_admin_purveyor_path, class: "dropdown-item" %>
-              </div>
-            </li>
+            <% if current_user&.admin_role? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Адміністрування
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                  <%= link_to "Імпорт споживачів", admin_filling_consumers_path, class: "dropdown-item" %>
+                  <%= link_to "Імпорт даних по розрахункам за е/енергію", admin_filling_consumptions_path, class: "dropdown-item" %>
+                  <%= link_to "Імпорт даних по розрахункам за розподіл е/енергії", admin_filling_distributions_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Облікові дані постачальника", edit_admin_purveyor_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            <% end %>
           </ul>
         </div>
         <ul class="navbar-nav ml-auto">

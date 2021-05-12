@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
     get 'filling_distributions',  to: 'filling_distributions#set_params'
     post 'filling_distributions', to: 'filling_distributions#start'
+
+    get 'filling_ccertificates',  to: 'filling_ccertificates#start'
+
+    get 'filling_dcertificates', to: 'filling_dcertificates#start'
   end
 
   resources :consumers do

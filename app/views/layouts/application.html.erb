@@ -46,8 +46,12 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                   <%= link_to "Імпорт споживачів", admin_filling_consumers_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
                   <%= link_to "Імпорт даних по розрахункам за е/енергію", admin_filling_consumptions_path, class: "dropdown-item" %>
                   <%= link_to "Імпорт даних по розрахункам за розподіл е/енергії", admin_filling_distributions_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Імпорт актів з споживання електроенергії", admin_filling_dcertificates_path, class: "dropdown-item" %>
+                  <%= link_to "Імпорт актів з розподілу електроенергії", admin_filling_ccertificates_path, class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <%= link_to "Облікові дані постачальника", edit_admin_purveyor_path, class: "dropdown-item" %>
                 </div>

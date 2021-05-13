@@ -13,3 +13,16 @@ body {
 .form-control::-webkit-input-placeholder {
 	color: black;
 }
+
+.table-vertical {
+  height:400px;  
+  overflow:scroll;
+  display:block;
+}
+
+.table-vertical thead tr:nth-child(1) th{
+background: light;
+position: sticky;
+top: 0;
+margin: 5px;
+}

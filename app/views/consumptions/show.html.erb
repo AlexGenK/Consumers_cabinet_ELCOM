@@ -43,6 +43,40 @@
 			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@consumption.closing_balance, precision:2, delimiter: ' ') %> </div> 
 			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
 		</div>
+
+		<br/>
+
+		<div class='row'>
+			<p class='col text-center'>Акти прийому-передачі електроенергії</p>
+		</div>
+		<div class='row' >
+			<div class='col' >
+				<div class='table-responsive table-vertical'>
+					<table class="table table-striped table-bordered table-sm">
+						<thead class="thead-light">
+							<tr>
+								<th>Номер документу</th>
+								<th>Дата документу</th>
+								<th>Сума грн., в т.р. ПДВ 20%</th>
+								<th>Розрахунковий період</th>
+								<th>Завантажити</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @consumptions.each do |consumption| %>
+								<tr>
+									<td></td>
+									<td class='text-center'><%= consumption.period %></td>
+									<td class='text-right'><%= number_with_precision(consumption.cost, precision:2, delimiter: ' ') %></td>
+									<td class='text-center'><%= consumption.text_period %></td>
+									<td></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

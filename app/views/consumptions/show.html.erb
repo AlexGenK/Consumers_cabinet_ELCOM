@@ -64,13 +64,20 @@
 						</thead>
 						<tbody>
 							<% @consumptions.each do |consumption| %>
-								<tr>
-									<td></td>
-									<td class='text-center'><%= consumption.period %></td>
-									<td class='text-right'><%= number_with_precision(consumption.cost, precision:2, delimiter: ' ') %></td>
-									<td class='text-center'><%= consumption.text_period %></td>
-									<td></td>
-								</tr>
+								<% @certificate = consumption.ccertificate %>
+								<% if @certificate %>
+									<tr>
+										<td class='text-center'><%= @certificate.number %></td>
+										<td class='text-center'><%= consumption.period %></td>
+										<td class='text-right'><%= number_with_precision(consumption.cost, precision:2, delimiter: ' ') %></td>
+										<td class='text-center'><%= consumption.text_period %></td>
+										<td class='text-center'>
+											<%= link_to rails_blob_path(@certificate.print_form, disposition: "attachment"), class: "btn btn-outline-danger" do %>
+    												<i class="fas fa-file-pdf"></i>
+  											<% end %>
+										</td>
+									</tr>
+								<% end %>
 							<% end %>
 						</tbody>
 					</table>

@@ -32,7 +32,9 @@
 				платежами за наступним графіком у терміни (строки)*</p>
 
 				<% if @payments.first %>
-
+					<% if @consumer.payments.sum(:percent) != 100 %>
+						<span class="badge badge-warning float-right">График не повний</span>
+					<% end %>
 					<table class="table table-striped table-bordered table-sm">
 						<tbody>
 							<% @payments.each do |payment| %>
@@ -52,7 +54,6 @@
 							<% end %>
 						</tbody>
 					</table>
-
 				<% else %>
 					<p class="font-italic text-danger text-center">Графік відсутній</p>
 				<% end %>

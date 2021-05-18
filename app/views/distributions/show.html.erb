@@ -25,7 +25,7 @@
 		<br />
 		<div class='row my-2'>
 			<div class='col-md-5 text-right'> Вхідне сальдо: </div>
-			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.opening_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class="col-md-2 border rounded text-center <%= @distribution.opening_balance < 0 ? 'text-danger' : '' %>"> <%= number_with_precision(@distribution.opening_balance, precision:2, delimiter: ' ') %> </div> 
 			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
 		</div>
 		<div class='row my-2'>
@@ -40,7 +40,7 @@
 		</div>
 		<div class='row my-2'>
 		<div class='col-md-5 text-right'> Вихідне сальдо: </div>
-			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.closing_balance, precision:2, delimiter: ' ') %> </div> 
+			<div class="col-md-2 border rounded text-center <%= @distribution.closing_balance < 0 ? 'text-danger' : '' %>"> <%= number_with_precision(@distribution.closing_balance, precision:2, delimiter: ' ') %> </div> 
 			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
 		</div>
 

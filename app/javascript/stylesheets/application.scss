@@ -2,8 +2,12 @@
 @import '~bootstrap-select/sass/bootstrap-select.scss';
 
 body { 
-	padding-top: 74px; 
+	padding-top: 95px; 
 	padding-bottom: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link .navbar-text {
+  font-size: large;
 }
 
 .form-control:disabled {

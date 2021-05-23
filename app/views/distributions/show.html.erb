@@ -26,22 +26,22 @@
 		<div class='row my-2'>
 			<div class='col-md-5 text-right'> Вхідне сальдо: </div>
 			<div class="col-md-2 border rounded text-center <%= @distribution.opening_balance < 0 ? 'text-danger' : '' %>"> <%= number_with_precision(@distribution.opening_balance, precision:2, delimiter: ' ') %> </div> 
-			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+			<div class='col-md-5'> грн., в т.ч. ПДВ 20% </div>
 		</div>
 		<div class='row my-2'>
 			<div class='col-md-5 text-right'> Сплачені грошові кошти: </div>
 			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.money, precision:2, delimiter: ' ') %> </div> 
-			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+			<div class='col-md-5'> грн., в т.ч. ПДВ 20% </div>
 		</div>
 		<div class='row my-2'>
 			<div class='col-md-5 text-right'> Нараховано за послугу з розподілу: </div>
 			<div class="col-md-2 border rounded text-center"> <%= number_with_precision(@distribution.cost, precision:2, delimiter: ' ') %> </div> 
-			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+			<div class='col-md-5'> грн., в т.ч. ПДВ 20% </div>
 		</div>
 		<div class='row my-2'>
 		<div class='col-md-5 text-right'> Вихідне сальдо: </div>
 			<div class="col-md-2 border rounded text-center <%= @distribution.closing_balance < 0 ? 'text-danger' : '' %>"> <%= number_with_precision(@distribution.closing_balance, precision:2, delimiter: ' ') %> </div> 
-			<div class='col-md-5'> грн., в т.р. ПДВ 20% </div>
+			<div class='col-md-5'> грн., в т.ч. ПДВ 20% </div>
 		</div>
 
 		<br/>
@@ -60,7 +60,7 @@
 							<tr>
 								<th class='text-center'>Номер документу</th>
 								<th class='text-center'>Дата документу</th>
-								<th class='text-center'>Сума грн., в т.р. ПДВ 20%</th>
+								<th class='text-center'>Сума грн., в т.ч. ПДВ 20%</th>
 								<th class='text-center'>Розрахунковий період</th>
 								<th class='text-center'>Завантажити</th>
 							</tr>

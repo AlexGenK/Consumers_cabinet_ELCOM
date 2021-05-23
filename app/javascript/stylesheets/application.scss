@@ -154,3 +154,27 @@ margin: 5px;
 {
 	background-color: #39B3D7;
 }
+
+//--------------------- Cards and Borders ---------------------
+
+.card-orange .card-header
+{
+	background-color: #deebf7;
+}
+
+.card-orange
+{
+	border: 1px solid #348fd2;
+}
+
+.border-orange.border
+{
+	border: 1px solid #ff9933 !important;
+}
+
+//--------------------- Tables ---------------------
+
+.table .thead-light th
+{
+	background-color: #deebf7;
+}

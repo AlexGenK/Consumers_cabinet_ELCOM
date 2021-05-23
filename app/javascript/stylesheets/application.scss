@@ -19,7 +19,7 @@ body {
 }
 
 .table-vertical {
-  height:400px;  
+  height:350px;  
   overflow:scroll;
   display:block;
 }
@@ -32,6 +32,10 @@ margin: 5px;
 }
 
 //--------------------- 3D Button ---------------------
+
+.btn3d-mt0.btn3d {
+	margin-top: 0px;
+}
 
 .btn3d {
 	position: relative;
@@ -118,7 +122,7 @@ margin: 5px;
 
 .btn3d.btn-warning {
 	box-shadow: 0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-	background-color: #FEAF20;
+	background-color: #ff9933;
 }
 
 .btn3d.btn-warning:active,

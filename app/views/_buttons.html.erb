@@ -1,8 +1,20 @@
-<%= link_to  "Облікові дані<br />споживача".html_safe, @consumer, class: "btn btn-outline-info btn-block #{active == 1 ? 'active' : ''}" %>
-<%= link_to  "Облікові дані<br />постачальника".html_safe, consumer_purveyor_path(@consumer), class: "btn btn-outline-info btn-block #{active == 2 ? 'active' : ''}" %>
-<%= link_to  "Договір постачання електроенергії", consumer_payments_path(@consumer), class: "btn btn-outline-info btn-block #{active == 3 ? 'active' : ''}" %>
-<%= link_to  "Стан розрахунків за електроенергію", consumer_consumptions_path(@consumer), class: "btn btn-outline-info btn-block #{active == 4 ? 'active' : ''}" %>
+<p>
+<%= link_to  "Облікові дані<br />споживача".html_safe, @consumer, class: "btn3d btn btn-info btn-block #{active == 1 ? 'active' : ''}" %>
+</p>
+<p>
+<%= link_to  "Облікові дані<br />постачальника".html_safe, consumer_purveyor_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 2 ? 'active' : ''}" %>
+</p>
+<p>
+<%= link_to  "Договір постачання електроенергії", consumer_payments_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 3 ? 'active' : ''}" %>
+</p>
+<p>
+<%= link_to  "Стан розрахунків за електроенергію", consumer_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 4 ? 'active' : ''}" %>
+</p>
 <% if @consumer.distribution %>
-	<%= link_to  "Стан розрахунків за послугу з розподілу", consumer_distributions_path(@consumer), class: "btn btn-outline-info btn-block #{active == 5 ? 'active' : ''}" %>
+	<p>
+	<%= link_to  "Стан розрахунків за послугу з розподілу", consumer_distributions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 5 ? 'active' : ''}" %>
+	</p>
 <% end %>
-<%= link_to  "Динаміка споживання електроенергії", consumer_annual_consumptions_path(@consumer), class: "btn btn-outline-info btn-block #{active == 6 ? 'active' : ''}" %>
+<p>
+<%= link_to  "Динаміка споживання електроенергії", consumer_annual_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 6 ? 'active' : ''}" %>
+</p>

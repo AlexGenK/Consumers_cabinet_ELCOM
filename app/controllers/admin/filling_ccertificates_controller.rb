@@ -6,6 +6,9 @@ class Admin::FillingCcertificatesController < ApplicationController
 
   require 'net/ftp'
 
+  def set_params
+  end
+
   def start
     @add_certs = []
     Net::FTP.open(ENV['CONSUMERS_CABINET_ELCOM_FTP_HOST'], 

@@ -1,0 +1,12 @@
+<h4>Ви впевнені, що хочете запустити процес імпорту актів з розподілу електроенергїї?</h4>
+<h5>Цей процес може зайняти до декількох десятків хвилин.</h5>
+<h5> Перед імпортом актів обов'язково імпортуйте дані по разрахункам за розподіл електроенергії за той же період.</h5>
+<br>
+<%= form_tag :admin_filling_dcertificates do %>
+  <div class='row'>
+    <div class="col-sm-2">
+      <%= button_tag 'імпортувати акти', class: 'btn3d btn3d-mt0 btn btn-primary btn-block', 
+      data: { disable_with: '<span class="spinner-border spinner-border-sm"></span> Зачекайте...'.html_safe} %>
+    </div>
+  </div>
+<% end %>

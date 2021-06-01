@@ -2,7 +2,7 @@
 @import '~bootstrap-select/sass/bootstrap-select.scss';
 
 body { 
-	padding-top: 130px; 
+	padding-top: 120px; 
 	padding-bottom: 65px;
 }
 
@@ -156,7 +156,9 @@ margin: 5px;
 
 .btn3d.btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle
 {
-	background-color: #39B3D7;
+	background-color: #ededed;
+	color: #00008e;
+	font-weight: 600;
 }
 
 //--------------------- Cards and Borders ---------------------

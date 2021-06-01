@@ -50,7 +50,7 @@
 								<tr>
 									<td class='text-center'>Фактично спожитий обсяг е/е, МВт*год.</td>
 									<% @annual_table.each do |item| %>
-										<td class='text-right align-middle'> <%= number_with_precision(item[1], precision: 3) %> </td>
+										<td class='text-center align-middle'> <%= number_with_precision(item[1], precision: 3) %> </td>
 									<% end %>
 								</tr>
 							</tbody>

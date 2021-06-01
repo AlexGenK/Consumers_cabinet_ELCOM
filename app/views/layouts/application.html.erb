@@ -57,9 +57,6 @@
                 </div>
               </li>
             <% end %>
-            <li class="nav-item">
-              <%= link_to "ІНСТРУКЦІЯ", root_path << 'readme.pdf', target: :_blank, class: "nav-link" %>
-            </li>
           </ul>
 
           <ul class="navbar-nav ml-auto">
@@ -75,6 +72,11 @@
                 <%= link_to "Увійти", new_user_session_path, class: "nav-link" %>
               </li>
             <% end %>
+            <li class="nav-item">
+              <%= link_to root_path << 'readme.pdf', target: :_blank, class: "nav-link"  do %>
+                <i class="fas fa-info-circle fa-2x"></i>
+              <% end %>
+            </li>
           </ul>
         </div>
       </nav>

@@ -6,9 +6,13 @@
 	<% end %>
 
 	<div class="form-group row">
-		<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
+		<% if style == 'show' %>
+			<%= f.label :full_name,"Найменування", class: "col-md-2 col-form-label" %>
+		<% else %>
+			<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
+		<% end %>
 		<div class="col-md-10">
-			<%= f.text_area :full_name, class: "form-control" %>
+			<%= f.text_field :full_name, class: "form-control" %>
 		</div>
 	</div>
 	<div class="form-group row">
@@ -67,13 +71,11 @@
 			</div>
 			<div class="form-group row">
 				<%= f.label :phone,"Телефони", class: "col-md-2 col-form-label" %>
-				<div class="col-md-10">
+				<div class="col-md-4">
 					<%= f.text_field :phone, class: "form-control" %>
 				</div>
-			</div>
-			<div class="form-group row">
 				<%= f.label :mail,"E-mail", class: "col-md-2 col-form-label" %>
-				<div class="col-md-10">
+				<div class="col-md-4">
 					<%= f.text_field :mail, class: "form-control" %>
 				</div>
 			</div>

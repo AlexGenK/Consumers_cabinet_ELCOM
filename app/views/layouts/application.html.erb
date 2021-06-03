@@ -67,10 +67,6 @@
               <li class="nav-item">
                 <%= link_to "Вихід", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Увійти", new_user_session_path, class: "nav-link" %>
-              </li>
             <% end %>
             <li class="nav-item">
               <%= link_to root_path << 'readme.pdf', target: :_blank, class: "nav-link"  do %>

@@ -42,7 +42,7 @@ uk:
       locked: Ваш обліковий запис заблоковано.
       not_found_in_database: Невірні %{authentication_keys} або пароль.
       timeout: Час вашої сесії вичерпано. Будь ласка, увійдіть в систему знову.
-      unauthenticated: Вам необхідно увійти в систему чи зареєструватися.
+      unauthenticated: Вам необхідно здійснити вхід в кабінет.
       unconfirmed: Вам потрібно підтвердити Ваш обліковий запис.
     mailer:
       confirmation_instructions:

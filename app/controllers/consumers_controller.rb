@@ -29,7 +29,7 @@ class ConsumersController < ApplicationController
 
   def update
     if @consumer.update(consumer_params)
-      @consumer.update(client_changed: true) if current_user.client_role?
+      @consumer.update(client_changed: true) if (current_user.client_role?) && !(current_user.manager_role?)
       redirect_to consumer_path(@consumer), notice: "Споживач #{@consumer.name} успішно відредагований"
     else
       flash[:alert] = 'Неможливо відредагувати споживача'

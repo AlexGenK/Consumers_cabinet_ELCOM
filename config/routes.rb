@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :distributions do
       post 'selector', on: :collection
     end
+    get 'client_changed', to: 'consumers#client_changed'
     get 'purveyor', to: 'admin/purveyor#show'
     get 'annual_consumptions', to: 'annual_consumptions#show' 
   end

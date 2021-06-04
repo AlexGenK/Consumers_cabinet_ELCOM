@@ -1,9 +1,9 @@
 class ConsumersController < ApplicationController
   include Verifiable
 
-  before_action :set_consumer, only: [:edit, :update, :destroy, :show]
+  before_action :set_consumer, only: [:edit, :update, :destroy, :show, :client_changed]
   before_action :set_users_list, only: [:new, :edit, :create]
-  before_action :detect_invalid_user, only: [:show, :edit, :update, :destroy]
+  before_action :detect_invalid_user, only: [:show, :edit, :update, :destroy, :client_changed]
   load_and_authorize_resource
 
   def index
@@ -29,6 +29,7 @@ class ConsumersController < ApplicationController
 
   def update
     if @consumer.update(consumer_params)
+      @consumer.update(client_changed: true) if current_user.client_role?
       redirect_to consumer_path(@consumer), notice: "Споживач #{@consumer.name} успішно відредагований"
     else
       flash[:alert] = 'Неможливо відредагувати споживача'
@@ -45,6 +46,11 @@ class ConsumersController < ApplicationController
     redirect_to consumers_path
   end
 
+  def client_changed
+    @consumer.update(client_changed: false)
+    redirect_to consumers_path
+  end
+
   private
 
   def consumer_params
@@ -52,7 +58,8 @@ class ConsumersController < ApplicationController
       params.require(:consumer).permit(:name, :full_name, :edrpou, :inn, :director,
                                        :bank, :mfo, :account, :address, :phone, :mail,
                                        :dog_en_number, :dog_en_date, :distribution,
-                                       :client_username, :manager_username, :onec_id)
+                                       :client_username, :manager_username, :onec_id,
+                                       :client_changed)
     else
       params.require(:consumer).permit(:director, :bank, :mfo, :account, :address, 
                                        :phone, :mail)
@@ -60,7 +67,11 @@ class ConsumersController < ApplicationController
   end
 
   def set_consumer
-    @consumer = Consumer.find(params[:id])
+    if params[:id]
+      @consumer = Consumer.find(params[:id])
+    else
+      @consumer = Consumer.find(params[:consumer_id])
+    end
   end
 
   def set_users_list

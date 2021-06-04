@@ -15,6 +15,7 @@
 				<th>Найменування</th>
 				<th class="text-right">ЕДРПОУ</th>
 				<th class="text-right">Код&nbsp;1С</th>
+				<th class="text-center">Змінено</th>
 				<th class="text-right"></th>
 			</tr>
 		</thead>
@@ -28,6 +29,14 @@
 				<td class="text-right"><%= consumer.edrpou %></td>
 				<td class="text-right"><%= consumer.onec_id %></td>
 				<% if can? :manage, Consumer %>
+					<td class="text-center">
+						<% if consumer.client_changed %>
+							<%= link_to consumer_client_changed_path(consumer), 
+								class: "btn btn-outline-danger btn-sm" do %>
+								<i class="fas fa-exclamation"></i>
+							<% end %>
+						<% end %>
+					</td>
 					<td class="text-center">
 						<div class="btn-group">
 						<%= link_to edit_consumer_path(consumer), 

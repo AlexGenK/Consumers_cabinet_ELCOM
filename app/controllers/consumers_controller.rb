@@ -48,10 +48,15 @@ class ConsumersController < ApplicationController
   private
 
   def consumer_params
-    params.require(:consumer).permit(:name, :full_name, :edrpou, :inn, :director,
-                                     :bank, :mfo, :account, :address, :phone, :mail,
-                                     :dog_en_number, :dog_en_date, :distribution,
-                                     :client_username, :manager_username, :onec_id)
+    if current_user.admin_role? || current_user.manager_role?
+      params.require(:consumer).permit(:name, :full_name, :edrpou, :inn, :director,
+                                       :bank, :mfo, :account, :address, :phone, :mail,
+                                       :dog_en_number, :dog_en_date, :distribution,
+                                       :client_username, :manager_username, :onec_id)
+    else
+      params.require(:consumer).permit(:director, :bank, :mfo, :account, :address, 
+                                       :phone, :mail)
+    end
   end
 
   def set_consumer

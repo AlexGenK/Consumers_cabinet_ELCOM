@@ -22,7 +22,7 @@ class Ability
     end
 
     if user.client_role?
-        can :read, Consumer
+        can [:read, :edit, :update], Consumer
         can [:index, :show, :selector], Consumption
         can [:index, :show, :selector], Distribution
         can :read, Payment

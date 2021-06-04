@@ -4,28 +4,32 @@
 <fieldset disabled>
 <% end %>
 	<% if style != 'show' %>
-	<div class="form-group row">
-		<%= f.label :name,"Найменування", class: "col-md-2 col-form-label" %>
-		<div class="col-md-6">
-			<%= f.text_field :name, class: "form-control" %>
-				<div class="invalid-feedback">вже існує</div>
-		</div>
-		<%= f.label :onec_id, "Номер 1С", class: "col-md-2 col-form-label" %>
-		<div class="col-md-2">
-			<%= f.number_field :onec_id, class: "form-control" %>
-				<div class="invalid-feedback">вже існує</div>
-		</div>
-	</div>
+		<% if can? :manage, Consumer %>
+			<div class="form-group row">
+				<%= f.label :name,"Найменування", class: "col-md-2 col-form-label" %>
+				<div class="col-md-6">
+					<%= f.text_field :name, class: "form-control" %>
+						<div class="invalid-feedback">вже існує</div>
+				</div>
+				<%= f.label :onec_id, "Номер 1С", class: "col-md-2 col-form-label" %>
+				<div class="col-md-2">
+					<%= f.number_field :onec_id, class: "form-control" %>
+						<div class="invalid-feedback">вже існує</div>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 	<div class="form-group row">
 		<% if style == 'show' %>
 			<%= f.label :full_name,"Найменування", class: "col-md-2 col-form-label" %>
-		<% else %>
+		<% elsif can? :manage, Consumer %>
 			<%= f.label :full_name,"Повне найменування", class: "col-md-2 col-form-label" %>
 		<% end %>
-		<div class="col-md-10">
-			<%= f.text_field :full_name, class: "form-control" %>
-		</div>
+		<% if (style == 'show') || (can? :manage, Consumer) %>
+			<div class="col-md-10">
+				<%= f.text_field :full_name, class: "form-control" %>
+			</div>
+		<% end %>
 	</div>
 	<div class="form-group row">
 		<%= f.label :director,"Керівник", class: "col-md-2 col-form-label" %>
@@ -33,18 +37,20 @@
 			<%= f.text_field :director, class: "form-control" %>
 		</div>
 	</div>
-	<div class="form-group row">
-		<%= f.label :edrpou,"ЄДРПОУ", class: "col-md-2 col-form-label" %>
-		<div class="col-md-4">
-			<%= f.text_field :edrpou, class: "form-control" %>
-				<div class="invalid-feedback">вже існує</div>
+	<% if (style == 'show') || (can? :manage, Consumer) %>
+		<div class="form-group row">
+			<%= f.label :edrpou,"ЄДРПОУ", class: "col-md-2 col-form-label" %>
+			<div class="col-md-4">
+				<%= f.text_field :edrpou, class: "form-control" %>
+					<div class="invalid-feedback">вже існує</div>
+			</div>
+			<%= f.label :inn,"ІПН", class: "col-md-1 col-form-label" %>
+			<div class="col-md-5">
+				<%= f.text_field :inn, class: "form-control" %>
+					<div class="invalid-feedback">вже існує</div>
+			</div>
 		</div>
-		<%= f.label :inn,"ІПН", class: "col-md-1 col-form-label" %>
-		<div class="col-md-5">
-			<%= f.text_field :inn, class: "form-control" %>
-				<div class="invalid-feedback">вже існує</div>
-		</div>
-	</div>
+	<% end %>
 
 	<div class='card-orange card mb-3'>
 		<div class="card-header">
@@ -94,7 +100,7 @@
 		</div>
 	</div>
 	
-	<% if style != 'show' %>
+	<% if (style != 'show') && (can? :manage, Consumer)%>
 		<div class='card mb-3'>
 			<div class="card-header">
 				Дані щодо договіру постачання електроенергії
@@ -135,7 +141,9 @@
 				</div>
 			</div>
 		</div>
+	<% end %>
 
+	<% if style != 'show' %>
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-3">

@@ -67,12 +67,12 @@
               <li class="nav-item">
                 <%= link_to "Вихід", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
+              <li class="nav-item">
+                <%= link_to root_path << 'readme.pdf', target: :_blank, class: "nav-link icon-padding"  do %>
+                  <i class="fas fa-info-circle fa-2x"></i>
+                <% end %>
+              </li>
             <% end %>
-            <li class="nav-item">
-              <%= link_to root_path << 'readme.pdf', target: :_blank, class: "nav-link icon-padding"  do %>
-                <i class="fas fa-info-circle fa-2x"></i>
-              <% end %>
-            </li>
           </ul>
         </div>
       </nav>

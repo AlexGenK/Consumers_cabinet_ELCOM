@@ -1,1 +1,12 @@
-<h3>Налаштування FTP</h3>
+<h3>Профілі FTP з'єднання</h3>
+
+<p>
+<%= link_to new_admin_ftp_profile_path, class: "btn3d btn btn-primary" do %>
+	<i class="fas fa-plus"></i> Створити новий профіль FTP
+<% end %>
+</p>
+<p>
+<% @ftp_profiles.each do |profile| %>
+	<%= profile.host %> - <%= profile.default %><br>
+<% end %>
+</p>

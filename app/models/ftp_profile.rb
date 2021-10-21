@@ -3,5 +3,4 @@ class FtpProfile < ApplicationRecord
   validates :port,      presence: true
   validates :username,  presence: true
   validates :password,  presence: true
-  validates :default,   presence: true
 end

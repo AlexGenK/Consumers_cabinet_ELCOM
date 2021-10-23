@@ -9,4 +9,8 @@ class FtpProfile < ApplicationRecord
     self.default = true
     self.save
   end
+
+  def self.get_current
+    FtpProfile.find_by(default: true)
+  end
 end

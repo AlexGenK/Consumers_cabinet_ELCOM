@@ -11,10 +11,11 @@ class Admin::FillingCcertificatesController < ApplicationController
 
   def start
     @add_certs = []
-    Net::FTP.open(ENV['CONSUMERS_CABINET_ELCOM_FTP_HOST'], 
-                  port: ENV['CONSUMERS_CABINET_ELCOM_FTP_PORT'],
-                  username: ENV['CONSUMERS_CABINET_ELCOM_FTP_USERNAME'],
-                  password: ENV['CONSUMERS_CABINET_ELCOM_FTP_PASSWORD'],) do |ftp|
+    @ftp_profile = FtpProfile.get_current
+    Net::FTP.open(@ftp_profile.host, 
+                  port:     @ftp_profile.port,
+                  username: @ftp_profile.username,
+                  password: @ftp_profile.password,) do |ftp|
       ftp.nlst.each do |filename|
         if filename[0] == 'C'
           @consumer = Consumer.find_by(onec_id: parse_id(filename))

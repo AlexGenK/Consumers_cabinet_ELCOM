@@ -1,4 +1,5 @@
 class Admin::FtpProfilesController < ApplicationController
+  before_action :set_ftp_profile, only: [:edit, :update, :destroy, :curent]
   load_and_authorize_resource
 
   def index
@@ -8,6 +9,11 @@ class Admin::FtpProfilesController < ApplicationController
 
   def new
     @ftp_profile = FtpProfile.new
+  end
+
+  def current
+    @ftp_profile.set_current
+    redirect_to admin_ftp_profiles_path
   end
 
   def create
@@ -27,5 +33,9 @@ class Admin::FtpProfilesController < ApplicationController
   def ftp_profile_params
     params.require(:ftp_profile).permit(:host, :port, :username, :password,
                                         :default)
+  end
+
+  def set_ftp_profile
+    @ftp_profile = FtpProfile.find(params[:id])
   end
 end

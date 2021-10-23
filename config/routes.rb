@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resource :purveyor, controller: 'purveyor', only: [:edit, :update]
-    resources :ftp_profiles
+    resources :ftp_profiles do 
+      get 'current', on: :member
+    end
 
     get 'filling_consumers',  to: 'filling_consumers#set_params'
     post 'filling_consumers', to: 'filling_consumers#start'

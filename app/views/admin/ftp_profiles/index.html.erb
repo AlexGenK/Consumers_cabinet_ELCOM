@@ -7,6 +7,6 @@
 </p>
 <p>
 <% @ftp_profiles.each do |profile| %>
-	<%= profile.host %> - <%= profile.default %><br>
+	<%= profile.host %> - <%= profile.default %> - <%= link_to 'set def', current_admin_ftp_profile_path(profile) %><br>
 <% end %>
 </p>

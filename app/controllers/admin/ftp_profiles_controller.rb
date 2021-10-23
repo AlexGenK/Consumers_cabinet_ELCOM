@@ -22,8 +22,6 @@ class Admin::FtpProfilesController < ApplicationController
       redirect_to admin_ftp_profiles_path, notice: "Профіль хоста #{@ftp_profile.host} успішно створений"
     else
       flash[:alert] = 'Неможливо створити профіль'
-      @ftp_profile.validate!
-      p @ftp_profile.errors.full_messages
       render :new
     end
   end

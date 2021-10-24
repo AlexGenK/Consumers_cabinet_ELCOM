@@ -1,13 +1,22 @@
 <%= form_for [:admin, ftp_profile] do |f| %>
 
 	<div class="form-group row">
+		<%= f.label :name, "Найменування", class: "col-md-2 col-form-label" %>
+		<div class="col-md-10">
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+	</div>
+		
+	<div class="form-group row">
 		<%= f.label :host,"Хост", class: "col-md-2 col-form-label" %>
 		<div class="col-md-7">
 			<%= f.text_field :host, class: "form-control" %>
+				<div class="invalid-feedback">повинен бути присутнім</div>
 		</div>
 		<%= f.label :port,"Порт", class: "col-md-1 col-form-label" %>
 		<div class="col-md-2">
 			<%= f.number_field :port, class: "form-control" %>
+				<div class="invalid-feedback">повинен бути присутнім</div>
 		</div>
 	</div>
 

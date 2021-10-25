@@ -19,11 +19,20 @@ class Admin::FtpProfilesController < ApplicationController
   def create
     @ftp_profile = FtpProfile.new(ftp_profile_params)
     if @ftp_profile.save
-      redirect_to admin_ftp_profiles_path, notice: "Профіль хоста #{@ftp_profile.host} успішно створений"
+      redirect_to admin_ftp_profiles_path, notice: "Профіль #{@ftp_profile.name} успішно створений"
     else
       flash[:alert] = 'Неможливо створити профіль'
       render :new
     end
+  end
+
+  def destroy
+    if @ftp_profile.destroy
+      flash[:notice] = "Профіль #{@ftp_profile.name} успішно видалений"
+    else
+      flash[:alert] = 'Неможливо видалити профіль'
+    end
+    redirect_to admin_ftp_profiles_path
   end
 
   private

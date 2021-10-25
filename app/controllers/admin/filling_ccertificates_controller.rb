@@ -37,7 +37,7 @@ class Admin::FillingCcertificatesController < ApplicationController
         end
       end
     rescue
-      flash[:alert] = "Неможливо з'єднається з FTP-сервером #{@ftp_profile.host}. Перевірте налаштування FTP."
+      flash[:alert] = "Неможливо з'єднатися з FTP-сервером #{@ftp_profile.host}. Перевірте налаштування FTP."
       render :set_params
     end
   end

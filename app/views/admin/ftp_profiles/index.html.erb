@@ -6,7 +6,45 @@
 <% end %>
 </p>
 <p>
-<% @ftp_profiles.each do |profile| %>
-	<%= profile.host %> - <%= profile.default %> - <%= link_to 'set def', current_admin_ftp_profile_path(profile) %><br>
-<% end %>
+	<table class="table table-striped table-sm">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Найменування</th>
+				<th>Хост</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% n = 0 %>
+			<% @ftp_profiles.each do |profile| %>
+				<tr>
+					<td><%= n+=1 %></td>
+					<td><%= profile.name %></td>
+					<td><%= "#{profile.host}:#{profile.port}" %></td>
+					<td class="text-center">
+						<% if profile.default %>
+							<span class="btn btn-primary btn-sm"> Поточній </span>
+						<% else %>
+							<%= link_to 'Зробити поточним', current_admin_ftp_profile_path(profile), class: "btn btn-outline-primary btn-sm" %>
+						<% end %>
+					</td>
+					<td class="text-center">
+						<div class="btn-group">
+							<%= link_to edit_admin_ftp_profile_path(profile), 
+								class: "btn btn-outline-dark btn-sm" do %>
+								<i class="fas fa-edit test-edit-payment"></i>
+							<% end %>
+							<%= link_to [:admin, profile], method: :delete, 
+								class: "btn btn-outline-danger btn-sm",
+								data: {confirm: "Ви впевнені що хочете видалити профіль #{profile.name}?"} do %>
+								<i class="fas fa-times test-delete-payment">&nbsp;</i>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
 </p>

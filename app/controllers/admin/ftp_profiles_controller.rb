@@ -4,7 +4,7 @@ class Admin::FtpProfilesController < ApplicationController
 
   def index
     @ip = request.remote_ip
-    @ftp_profiles = FtpProfile.order(:host)
+    @ftp_profiles = FtpProfile.order(:name, :host, :port)
   end
 
   def new

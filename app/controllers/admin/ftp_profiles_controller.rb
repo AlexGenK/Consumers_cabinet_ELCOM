@@ -26,6 +26,18 @@ class Admin::FtpProfilesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @ftp_profile.update(ftp_profile_params)
+      redirect_to admin_ftp_profiles_path, notice: "Профіль #{@ftp_profile.name} успішно відредагований"
+    else
+      flash[:alert] = 'Неможливо відредагувати профіль'
+      render :edit
+    end
+  end
+
   def destroy
     if @ftp_profile.destroy
       flash[:notice] = "Профіль #{@ftp_profile.name} успішно видалений"

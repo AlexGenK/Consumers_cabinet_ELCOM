@@ -26,9 +26,9 @@
 			<%= f.text_field :username, class: "form-control" %>
 				<div class="invalid-feedback">повинен бути присутнім</div>
 		</div>
-		<%= f.label :password,"Пароль", class: "col-md-1 col-form-label" %>
+		<%= f.label :dec_password,"Пароль", class: "col-md-1 col-form-label" %>
 		<div class="col-md-4">
-			<%= f.password_field :password, class: "form-control", value: ftp_profile.password %>
+			<%= f.password_field :dec_password, class: "form-control", value: ftp_profile.dec_password %>
 				<div class="invalid-feedback">повинен бути присутнім</div>
 		</div>
 	</div>

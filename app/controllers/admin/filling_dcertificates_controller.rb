@@ -16,7 +16,7 @@ class Admin::FillingDcertificatesController < ApplicationController
       Net::FTP.open(@ftp_profile.host, 
                     port:     @ftp_profile.port,
                     username: @ftp_profile.username,
-                    password: @ftp_profile.password,) do |ftp|
+                    password: @ftp_profile.dec_password) do |ftp|
         ftp.nlst.each do |filename|
           if filename[0] == 'D'
             @consumer = Consumer.find_by(onec_id: parse_id(filename))

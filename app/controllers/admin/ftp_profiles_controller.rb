@@ -51,7 +51,7 @@ class Admin::FtpProfilesController < ApplicationController
 
   def ftp_profile_params
     params.require(:ftp_profile).permit(:host, :port, :username, :password,
-                                        :default, :name)
+                                        :default, :name, :dec_password)
   end
 
   def set_ftp_profile

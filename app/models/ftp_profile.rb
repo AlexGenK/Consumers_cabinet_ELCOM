@@ -4,6 +4,18 @@ class FtpProfile < ApplicationRecord
   validates :username,  presence: true
   validates :password,  presence: true
 
+  def dec_password
+    if self.password == nil
+      return nil
+    else
+      return EncryptionService.decrypt(self.password) 
+    end
+  end
+
+  def dec_password=(value)
+    self.password = EncryptionService.encrypt(value)
+  end
+    
   def set_current
     FtpProfile.update_all(default: false)
     self.default = true

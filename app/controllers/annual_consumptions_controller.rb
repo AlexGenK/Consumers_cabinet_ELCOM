@@ -12,6 +12,7 @@ class AnnualConsumptionsController < ApplicationController
     if @current_year
     	@annual_table = GetAnnualConsumptionsQuery.call(scope, @current_year)
     end
+    Rails.logger.control.debug("Consumer Annual #{@consumer.name} : Index : #{current_user.name}")
   end
 
   private

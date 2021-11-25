@@ -8,6 +8,7 @@ class ConsumersController < ApplicationController
 
   def index
     @consumers=GetConsumerListQuery.call(Consumer.order(:name), current_user)
+    Rails.logger.control.debug("Consumer : Index : #{current_user.name}")
   end
 
   def new
@@ -25,6 +26,11 @@ class ConsumersController < ApplicationController
   end
 
   def edit
+    Rails.logger.control.debug("Consumer : Edit #{@consumer.name} : #{current_user.name}")
+  end
+
+  def show
+    Rails.logger.control.debug("Consumer : Show #{@consumer.name} : #{current_user.name}")
   end
 
   def update

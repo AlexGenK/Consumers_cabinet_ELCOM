@@ -9,6 +9,7 @@ class PaymentsController < ApplicationController
   def index
     @payments = @consumer.payments.all.order(:period, :date)
     @payment =  @consumer.payments.new
+    Rails.logger.control.debug("Consumer Payment #{@consumer.name} : Index : #{current_user.name}")
   end
 
   def create

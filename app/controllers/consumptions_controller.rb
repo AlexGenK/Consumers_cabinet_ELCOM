@@ -9,11 +9,13 @@ class ConsumptionsController < ApplicationController
     @consumptions = @consumer.consumptions.all.order(period: :desc)
     @consumption = @consumptions.first
     redirect_to consumer_consumption_path(@consumer, @consumption) if @consumption
+    Rails.logger.control.debug("Consumer Consumption #{@consumer.name} : Index : #{current_user.name}")
   end
 
   def show
      @consumptions = @consumer.consumptions.all.order(period: :desc)
      @consumption = Consumption.find(params[:id])
+     Rails.logger.control.debug("Consumer Consumption #{@consumer.name} : Show : #{current_user.name}")
   end
 
   def selector

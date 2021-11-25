@@ -8,12 +8,14 @@ class DistributionsController < ApplicationController
   def index
     @distributions = @consumer.distributions.all.order(period: :desc)
     @distribution = @distributions.first
+    Rails.logger.control.debug("Consumer Distribution #{@consumer.name} : Index : #{current_user.name}")
     redirect_to consumer_distribution_path(@consumer, @distribution) if @distribution
   end
 
   def show
      @distributions = @consumer.distributions.all.order(period: :desc)
      @distribution = Distribution.find(params[:id])
+     Rails.logger.control.debug("Consumer Distribution #{@consumer.name} : Show : #{current_user.name}")
   end
 
   def selector

@@ -109,7 +109,7 @@ GEM
     msgpack (1.4.2)
     multi_logger (0.2.0)
       railties
-    nio4r (2.5.9)
+    nio4r (2.7.4)
     nokogiri (1.13.10-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
@@ -118,7 +118,7 @@ GEM
     pg (1.2.3)
     pg (1.2.3-x64-mingw32)
     public_suffix (5.0.0)
-    puma (5.6.7)
+    puma (5.6.9)
       nio4r (~> 2.0)
     racc (1.6.1)
     rack (2.2.3)

@@ -19,6 +19,7 @@ class Ability
         can :read, Purveyor
         can [:new, :create, :index], User
         can :show, :annual_consumption
+        can :index, :source
     end
 
     if user.client_role?
@@ -28,6 +29,7 @@ class Ability
         can :read, Payment
         can :read, Purveyor
         can :show, :annual_consumption
+        can :index, :source
     end
   end
 end

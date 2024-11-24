@@ -18,3 +18,6 @@
 <p>
 <%= link_to  "Динаміка споживання електроенергії", consumer_annual_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 6 ? 'active' : ''}" %>
 </p>
+<p>
+<%= link_to  "Джерела енергії у загальній структурі балансу", consumer_sources_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 7 ? 'active' : ''}" %>
+</p>

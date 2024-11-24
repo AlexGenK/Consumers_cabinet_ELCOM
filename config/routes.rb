@@ -33,7 +33,8 @@ Rails.application.routes.draw do
     end
     get 'client_changed', to: 'consumers#client_changed'
     get 'purveyor', to: 'admin/purveyor#show'
-    get 'annual_consumptions', to: 'annual_consumptions#show' 
+    get 'annual_consumptions', to: 'annual_consumptions#show'
+    get 'sources', to: 'sources#index'
   end
 
   resources :users

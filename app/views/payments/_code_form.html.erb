@@ -1,0 +1,12 @@
+<%= form_for [consumer, eic_code] do |f| %>
+	<div class="form-row align-items-end">
+			<div class="col-auto">
+				<%= f.text_field :code, class: "form-control" %>
+			</div>
+			<div class="col-auto">
+				<%= f.button type: 'submit', class: "btn3d btn btn-primary mb-1" do %>
+					<i class="fas fa-save"></i> Додати код
+				<% end %>
+			</div>
+	</div>
+<% end %>

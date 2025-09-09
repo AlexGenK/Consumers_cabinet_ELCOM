@@ -1,0 +1,33 @@
+<div class='row'>
+	<div class='col-md-3'></div>
+	<div class='col-md-9'><h3><%= @consumer.name %></h3></div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+		<%= render '/buttons', active: 8 %>
+	</div>
+	
+	<div class='col-md-9 border-orange border rounded py-2 mb-2'>
+		<div class="row mt-2">
+			<div class="col-md-6 mb-4">
+				<%= render '/sources/card', link: '/docs/info_2023.pdf', title: 'Інформація про частку джерел енергії у загальній структурі балансу ТОВ «ТЕК «ЕЛКОМ» за 2023 рік станом на «01» червня 2024 року' %>
+			</div>
+			<div class="col-md-6 mb-4" >
+				<%= render '/sources/card', link: '/docs/info_2024.pdf', title: 'Інформація про частку джерел енергії у загальній структурі балансу ТОВ «ТЕК «ЕЛКОМ» за 2024 рік станом на «01» червня 2025 року'%>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-3'>
+	</div>
+
+	<div class='col-md-3'>
+		<%= link_to consumers_path, class: "btn3d text-white btn btn-warning btn-block" do %>
+			<i class="fas fa-undo-alt"></i> Повернутись
+		<% end %>
+	</div>
+
+</div>

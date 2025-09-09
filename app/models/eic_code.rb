@@ -1,0 +1,2 @@
+class EicCode < ApplicationRecord
+end

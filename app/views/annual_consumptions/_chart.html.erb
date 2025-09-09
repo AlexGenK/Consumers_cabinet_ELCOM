@@ -1,0 +1,31 @@
+<br>
+<div class='row'>
+	<div class='col'>
+		<%= column_chart chart_data, ytitle: y_title, dataset: { backgroundColor: '#deebf7', borderColor: '#348fd2', borderWidth: 1 } %>
+	</div>
+</div>
+<br />
+<div class='row'>
+	<div class='col-md-12'>
+		<div class="table-responsive">
+			<table class='table table-sm table-bordered'>
+				<thead class='thead-light'>
+					<tr>
+						<th class='text-center'>Розрахунковий місяць</th>
+						<% chart_data.each do |item| %>
+							<th class='text-center align-middle small'> <%= item[0] %> </th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class='text-center'><%= table_title %></td>
+						<% chart_data.each do |item| %>
+							<td class='text-center align-middle'> <%= number_with_precision(item[1], precision: precision) %> </td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

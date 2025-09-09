@@ -5,10 +5,10 @@
 <%= link_to  "Облікові дані<br />постачальника".html_safe, consumer_purveyor_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 2 ? 'active' : ''}" %>
 </p>
 <p>
-<%= link_to  "Договір постачання електроенергії", consumer_payments_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 3 ? 'active' : ''}" %>
+<%= link_to  "Договір постачання<br />електроенергії".html_safe, consumer_payments_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 3 ? 'active' : ''}" %>
 </p>
 <p>
-<%= link_to  "Стан розрахунків за електроенергію", consumer_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 4 ? 'active' : ''}" %>
+<%= link_to  "Стан розрахунків за<br />електроенергію".html_safe, consumer_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 4 ? 'active' : ''}" %>
 </p>
 <% if @consumer.distribution %>
 	<p>
@@ -16,8 +16,10 @@
 	</p>
 <% end %>
 <p>
-<%= link_to  "Динаміка споживання електроенергії", consumer_annual_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 6 ? 'active' : ''}" %>
+<%= link_to  "Динаміка споживання<br />електроенергії".html_safe, consumer_annual_consumptions_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 6 ? 'active' : ''}" %>
 </p>
 <p>
 <%= link_to  "Джерела енергії у загальній структурі балансу", consumer_sources_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 7 ? 'active' : ''}" %>
+</p>
+<%= link_to  "Комерційна інформация для споживача", consumer_commercial_information_path(@consumer), class: "btn3d btn btn-info btn-block #{active == 8 ? 'active' : ''}" %>
 </p>

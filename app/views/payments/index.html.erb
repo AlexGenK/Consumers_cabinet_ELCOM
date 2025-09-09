@@ -26,6 +26,8 @@
 			</div>
 		</div>
 
+		<hr>
+
 		<div class='row'>
 			<div class='col'>
 				<p class="text-center">Оплата за електричну енергію розрахункового періоду здійснюється плановими
@@ -44,7 +46,7 @@
 									<% if can? :destroy, Payment %>
 										<td class="text-center">
 											<%= link_to [@consumer, payment], method: :delete, 
-												class: "btn btn-outline-danger btn-sm",
+												class: "close del-link",
 												data: {confirm: "Ви впевнені що хочете видалити плановий платіж?"} do %>
 												<i class="fas fa-times test-delete-payment">&nbsp</i>
 											<% end %>									
@@ -70,6 +72,40 @@
 				</div>
 			</div>
 		<% end %>
+
+		<hr>
+
+		<div class='row'>
+			<div class='col'>
+				<p class="text-center">Перелік ЕІС-кодів об'єктів (площадок вимірювання) Споживача</p>
+			</div>
+		</div>
+		<div class='row justify-content-left'>
+			<% @eic_codes.each do |c| %>
+				<div class='col-md-4'>
+					<div class="card mb-2">
+  						<div class="d-flex align-items-center justify-content-center">
+    						<%= c.code %> 
+							<% if can? :destroy, EicCode %>
+								<%= link_to [@consumer, c], method: :delete, class: "close position-absolute del-link", style: "right: 10px;", data: {confirm: "Ви впевнені що хочете видалити код?"} do %>
+									<i class="fas fa-times test-delete-payment">&nbsp</i>
+								<% end %>
+							<% end %>
+  						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<% if can? :new, EicCode %>
+			<div class='row'>
+				<div class='col'>
+					<%= render 'code_form', consumer: @consumer, eic_code: @eic_code %>
+				</div>
+			</div>
+		<% end %>
+
+		<hr>
 	</div>
 </div>
 

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :consumers do
     resources :payments
+    resources :eic_codes
     resources :consumptions do
       post 'selector', on: :collection
     end
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     get 'purveyor', to: 'admin/purveyor#show'
     get 'annual_consumptions', to: 'annual_consumptions#show'
     get 'sources', to: 'sources#index'
+    get 'commercial_information', to: 'commercial_information#index'
   end
 
   resources :users

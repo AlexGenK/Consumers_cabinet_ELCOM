@@ -6,11 +6,14 @@ class AnnualConsumptionsController < ApplicationController
   authorize_resource :class => false
 
   def show
-  	scope = @consumer.consumptions
-    @years = GetUniqueYearsQuery.call(scope)
+  	e_scope = @consumer.consumptions
+    d_scope = @consumer.distributions
+    @years = GetUniqueYearsQuery.call(e_scope)
     @current_year = params['year'] || @years.first
     if @current_year
-    	@annual_table = GetAnnualConsumptionsQuery.call(scope, @current_year)
+    	@annual_e_consumption = GetAnnualConsumptionsQuery.call(e_scope, @current_year)
+      @annual_e_cost = GetAnnualCostQuery.call(e_scope, @current_year)
+      @annual_d_cost = GetAnnualCostQuery.call(d_scope, @current_year)
     end
     Rails.logger.control.debug("Consumer Annual #{@consumer.name} : Index : #{current_user.name}")
   end

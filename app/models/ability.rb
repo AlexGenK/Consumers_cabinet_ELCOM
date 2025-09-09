@@ -16,9 +16,11 @@ class Ability
         can :manage, Consumption
         can :manage, Distribution
         can :manage, Payment
+        can :manage, EicCode
         can :read, Purveyor
         can [:new, :create, :index], User
         can :show, :annual_consumption
+        can :index, :commercial_information
         can :index, :source
     end
 
@@ -27,8 +29,10 @@ class Ability
         can [:index, :show, :selector], Consumption
         can [:index, :show, :selector], Distribution
         can :read, Payment
+        can :read, EicCode
         can :read, Purveyor
         can :show, :annual_consumption
+        can :index, :commercial_information
         can :index, :source
     end
   end

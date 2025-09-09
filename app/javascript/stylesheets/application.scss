@@ -35,6 +35,24 @@ margin: 5px;
 	padding-top: 5px;
 }
 
+.del-link {
+  color: #dc3545;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.del-link:hover {
+	color: #dc3545;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+@media (min-width: 1400px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 1320px;
+    }
+}
+
 //--------------------- 3D Button ---------------------
 
 .btn3d-mt0.btn3d {

@@ -10,6 +10,14 @@ body {
   font-size: large;
 }
 
+.navbar-light .navbar-text {
+	color: #375f97;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #375f97;
+}
+
 .form-control:disabled {
 	background-color: white;
 }
